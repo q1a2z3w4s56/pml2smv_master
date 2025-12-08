@@ -1,0 +1,66 @@
+MODULE main
+
+VAR
+  buffer_data : array 0..1 of 0..255;
+  buffer_head : 0..2;
+  buffer_tail : 0..2;
+  pc_Producer : 0..12;
+  pc_Consumer : 0..5;
+  active_proc : {Producer, Consumer};
+  in_atomic : boolean;
+
+DEFINE
+  buffer_len := (buffer_tail - buffer_head + 2) mod 2;
+  buffer_empty := (buffer_head = buffer_tail);
+  buffer_full := (buffer_len = 1);
+  buffer_nempty := !buffer_empty;
+  buffer_nfull := !buffer_full;
+
+ASSIGN
+  init(buffer_head) := 0;
+  init(buffer_tail) := 0;
+  init(pc_Producer) := 0;
+  init(pc_Consumer) := 0;
+  init(active_proc) := Producer;
+  init(in_atomic) := FALSE;
+  next(pc_Producer) := case
+    active_proc != Producer : pc_Producer;
+    pc_Producer = 0 : 2;
+    pc_Producer = 2 : 4;
+    pc_Producer = 4 & (TRUE) : 6;
+    pc_Producer = 6 & (TRUE) : 7;
+    pc_Producer = 7 : 5;
+    pc_Producer = 5 : 12;
+    pc_Producer = 12 & !buffer_full : 2;
+    pc_Producer = 8 & (TRUE) : 9;
+    pc_Producer = 9 : 5;
+    pc_Producer = 10 & (TRUE) : 11;
+    pc_Producer = 11 : 5;
+    pc_Producer = 3 : 1;
+    pc_Producer = 1 : 1;
+    TRUE : pc_Producer;
+  esac;
+
+  next(pc_Consumer) := case
+    active_proc != Consumer : pc_Consumer;
+    pc_Consumer = 0 : 2;
+    pc_Consumer = 2 : 4;
+    pc_Consumer = 4 & (TRUE) : 5;
+    pc_Consumer = 5 & !buffer_empty : 2;
+    pc_Consumer = 3 : 1;
+    pc_Consumer = 1 : 1;
+    TRUE : pc_Consumer;
+  esac;
+
+  next(active_proc) := case
+    in_atomic : active_proc;
+    TRUE : {Producer, Consumer};
+  esac;
+
+  next(in_atomic) := case
+    TRUE : FALSE;
+  esac;
+
+
+FAIRNESS active_proc = Producer
+FAIRNESS active_proc = Consumer
