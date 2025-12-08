@@ -27,9 +27,9 @@ from src.smv_generator import SMVGenerator
 if USE_ANTLR:
     class PromelaASTBuilder(PromelaVisitor):
         """Visitor to build AST from parse tree"""
-    
-    def __init__(self):
-        self.program = Program()
+        
+        def __init__(self):
+            self.program = Program()
     
     def visitSpec(self, ctx):
         """Visit the top-level spec rule"""

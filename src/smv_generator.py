@@ -440,6 +440,8 @@ class SMVGenerator:
                 op = '|'
             elif op == '==':
                 op = '='
+            elif op == '!=':
+                op = '!='
             
             return f"({left} {op} {right})"
         
