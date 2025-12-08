@@ -1,0 +1,40 @@
+MODULE main
+
+VAR
+  counter : 0..255;
+  pc_init : 0..5;
+  active_proc : {init};
+  in_atomic : boolean;
+
+
+ASSIGN
+  init(counter) := 0;
+  init(pc_init) := 0;
+  init(active_proc) := init;
+  init(in_atomic) := FALSE;
+  next(counter) := case
+    TRUE : counter;
+  esac;
+
+  next(pc_init) := case
+    active_proc != init : pc_init;
+    pc_init = 0 : 2;
+    pc_init = 2 : 3;
+    pc_init = 3 : 4;
+    pc_init = 4 : 5;
+    pc_init = 5 & ((counter = 0)) : 1;
+    pc_init = 1 : 1;
+    TRUE : pc_init;
+  esac;
+
+  next(active_proc) := case
+    in_atomic : active_proc;
+    TRUE : {init};
+  esac;
+
+  next(in_atomic) := case
+    TRUE : FALSE;
+  esac;
+
+
+FAIRNESS active_proc = init

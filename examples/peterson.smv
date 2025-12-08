@@ -1,0 +1,78 @@
+MODULE main
+
+VAR
+  flag : array 0..2-1 of boolean;
+  turn : 0..255;
+  pc_P0 : 0..8;
+  pc_P1 : 0..8;
+  active_proc : {P0, P1};
+  in_atomic : boolean;
+
+
+ASSIGN
+  init(turn) := 0;
+  init(pc_P0) := 0;
+  init(pc_P1) := 0;
+  init(active_proc) := P0;
+  init(in_atomic) := FALSE;
+  next(flag[0]) := case
+    active_proc = P0 & pc_P0 = 5 & (0 = 0) : TRUE;
+    active_proc = P0 & pc_P0 = 8 & (0 = 0) : FALSE;
+    active_proc = P1 & pc_P1 = 5 & (1 = 0) : TRUE;
+    active_proc = P1 & pc_P1 = 8 & (1 = 0) : FALSE;
+    TRUE : flag[0];
+  esac;
+  next(flag[1]) := case
+    active_proc = P0 & pc_P0 = 5 & (0 = 1) : TRUE;
+    active_proc = P0 & pc_P0 = 8 & (0 = 1) : FALSE;
+    active_proc = P1 & pc_P1 = 5 & (1 = 1) : TRUE;
+    active_proc = P1 & pc_P1 = 8 & (1 = 1) : FALSE;
+    TRUE : flag[1];
+  esac;
+
+  next(turn) := case
+    active_proc = P0 & pc_P0 = 6 : 1;
+    active_proc = P1 & pc_P1 = 6 : 0;
+    TRUE : turn;
+  esac;
+
+  next(pc_P0) := case
+    active_proc != P0 : pc_P0;
+    pc_P0 = 0 : 2;
+    pc_P0 = 2 : 4;
+    pc_P0 = 4 & (TRUE) : 5;
+    pc_P0 = 5 : 6;
+    pc_P0 = 6 : 7;
+    pc_P0 = 7 & (((flag[1] = FALSE) | (turn = 0))) : 8;
+    pc_P0 = 8 : 2;
+    pc_P0 = 3 : 1;
+    pc_P0 = 1 : 1;
+    TRUE : pc_P0;
+  esac;
+
+  next(pc_P1) := case
+    active_proc != P1 : pc_P1;
+    pc_P1 = 0 : 2;
+    pc_P1 = 2 : 4;
+    pc_P1 = 4 & (TRUE) : 5;
+    pc_P1 = 5 : 6;
+    pc_P1 = 6 : 7;
+    pc_P1 = 7 & (((flag[0] = FALSE) | (turn = 1))) : 8;
+    pc_P1 = 8 : 2;
+    pc_P1 = 3 : 1;
+    pc_P1 = 1 : 1;
+    TRUE : pc_P1;
+  esac;
+
+  next(active_proc) := case
+    in_atomic : active_proc;
+    TRUE : {P0, P1};
+  esac;
+
+  next(in_atomic) := case
+    TRUE : FALSE;
+  esac;
+
+
+FAIRNESS active_proc = P0
+FAIRNESS active_proc = P1

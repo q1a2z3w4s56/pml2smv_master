@@ -21,8 +21,9 @@ grammar/*.interp
 *.swo
 *~
 
-# Generated output
+# Generated output (except examples)
 *.smv
+!examples/*.smv
 
 # Temporary files
 *.tmp

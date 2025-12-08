@@ -324,6 +324,14 @@ class SimplePromelaParser:
         """Parse sequence of statements"""
         steps = []
         
+        # First, parse any local variable declarations
+        while self.peek()[1] in ['bool', 'byte', 'short', 'int', 'mtype', 'chan', 'bit', 'pid'] and \
+              self.peek(1)[0] == 'ID' and self.peek(2)[1] in [';', '=', '[', ',']:
+            # This looks like a variable declaration
+            var_decls = self.parse_var_decl()
+            # Local variables are stored but not added as statements
+            # For now, we'll just skip them as we don't track local scope
+        
         while self.peek()[1] not in ['}', 'fi', 'od', None]:
             if self.peek()[1] == ';':
                 self.consume('SEMICOLON')
@@ -481,12 +489,42 @@ class SimplePromelaParser:
         while self.peek()[1] == '::':
             self.consume('DCOLON')
             
-            # Parse guard and body
-            guard = self.parse_expr()
-            if self.peek()[0] == 'ARROW':
-                self.consume('ARROW')
-            
+            # Parse sequence in this branch
+            # First statement could be a guard (expression) or just a statement
             body_steps = []
+            
+            # Try to determine if we have guard -> body or just body
+            # If we see -> after some tokens, there's a guard
+            # Otherwise, the whole thing is the body
+            
+            has_arrow = False
+            lookahead_pos = self.token_pos
+            paren_depth = 0
+            # Look ahead to see if there's an arrow before next :: or fi
+            while lookahead_pos < len(self.tokens):
+                tt, tv = self.tokens[lookahead_pos]
+                if tv == '(':
+                    paren_depth += 1
+                elif tv == ')':
+                    paren_depth -= 1
+                elif paren_depth == 0:
+                    if tt == 'ARROW':
+                        has_arrow = True
+                        break
+                    elif tv in ['::', 'fi', '}']:
+                        break
+                lookahead_pos += 1
+            
+            if has_arrow:
+                # Parse guard expression
+                guard = self.parse_expr()
+                if self.peek()[0] == 'ARROW':
+                    self.consume('ARROW')
+            else:
+                # No explicit guard, use true
+                guard = BoolExpr(True)
+            
+            # Parse body statements
             while self.peek()[1] not in ['::', 'fi', '}']:
                 if self.peek()[1] == ';':
                     self.consume('SEMICOLON')
@@ -511,10 +549,32 @@ class SimplePromelaParser:
         while self.peek()[1] == '::':
             self.consume('DCOLON')
             
-            # Parse guard and body
-            guard = self.parse_expr()
-            if self.peek()[0] == 'ARROW':
-                self.consume('ARROW')
+            # Similar to if: check if there's a guard with arrow
+            has_arrow = False
+            lookahead_pos = self.token_pos
+            paren_depth = 0
+            while lookahead_pos < len(self.tokens):
+                tt, tv = self.tokens[lookahead_pos]
+                if tv == '(':
+                    paren_depth += 1
+                elif tv == ')':
+                    paren_depth -= 1
+                elif paren_depth == 0:
+                    if tt == 'ARROW':
+                        has_arrow = True
+                        break
+                    elif tv in ['::', 'od', '}']:
+                        break
+                lookahead_pos += 1
+            
+            if has_arrow:
+                # Parse guard expression
+                guard = self.parse_expr()
+                if self.peek()[0] == 'ARROW':
+                    self.consume('ARROW')
+            else:
+                # No explicit guard, use true
+                guard = BoolExpr(True)
             
             body_steps = []
             while self.peek()[1] not in ['::', 'od', '}']:
