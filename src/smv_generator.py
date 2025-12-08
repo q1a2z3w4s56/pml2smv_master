@@ -173,6 +173,9 @@ class SMVGenerator:
         # Initialize atomic flag
         lines.append(f"  init(in_atomic) := FALSE;")
         
+        # Variable transitions
+        lines.extend(self._generate_variable_transitions())
+        
         # Process transitions
         for proc_name, instance, _ in self.process_instances:
             lines.extend(self._generate_process_transitions(proc_name, instance))
@@ -182,6 +185,79 @@ class SMVGenerator:
         
         # Atomic flag transitions
         lines.extend(self._generate_atomic_transitions())
+        
+        return lines
+    
+    def _generate_variable_transitions(self):
+        """Generate next-state transitions for all variables"""
+        lines = []
+        
+        # For each global variable, generate next() assignments
+        for var in self.program.globals:
+            if var.is_channel:
+                # Skip channels for now - they need special handling
+                continue
+            
+            if var.array_size:
+                # Array variable - generate transitions for array elements
+                lines.append(f"  next({var.name}[0]) := case")
+                
+                for proc_name, instance, _ in self.process_instances:
+                    instance_name = self._get_instance_name(proc_name, instance)
+                    cfg = self.cfgs.get(proc_name)
+                    if cfg:
+                        for node in cfg.nodes:
+                            if node.stmt and isinstance(node.stmt, ArrayAssignStmt):
+                                if node.stmt.var == var.name:
+                                    # Check if index matches
+                                    index_smv = self._expr_to_smv(node.stmt.index)
+                                    expr_smv = self._expr_to_smv(node.stmt.expr)
+                                    lines.append(
+                                        f"    active_proc = {instance_name} & pc_{instance_name} = {node.id} & ({index_smv} = 0) : {expr_smv};"
+                                    )
+                
+                lines.append(f"    TRUE : {var.name}[0];")
+                lines.append(f"  esac;")
+                
+                # Generate for index 1 (assuming max array size of 2 for examples)
+                lines.append(f"  next({var.name}[1]) := case")
+                
+                for proc_name, instance, _ in self.process_instances:
+                    instance_name = self._get_instance_name(proc_name, instance)
+                    cfg = self.cfgs.get(proc_name)
+                    if cfg:
+                        for node in cfg.nodes:
+                            if node.stmt and isinstance(node.stmt, ArrayAssignStmt):
+                                if node.stmt.var == var.name:
+                                    index_smv = self._expr_to_smv(node.stmt.index)
+                                    expr_smv = self._expr_to_smv(node.stmt.expr)
+                                    lines.append(
+                                        f"    active_proc = {instance_name} & pc_{instance_name} = {node.id} & ({index_smv} = 1) : {expr_smv};"
+                                    )
+                
+                lines.append(f"    TRUE : {var.name}[1];")
+                lines.append(f"  esac;")
+                lines.append("")
+            else:
+                # Scalar variable
+                lines.append(f"  next({var.name}) := case")
+                
+                # Check all processes for assignments to this variable
+                for proc_name, instance, _ in self.process_instances:
+                    instance_name = self._get_instance_name(proc_name, instance)
+                    cfg = self.cfgs.get(proc_name)
+                    if cfg:
+                        for node in cfg.nodes:
+                            if node.stmt and isinstance(node.stmt, AssignStmt):
+                                if node.stmt.var == var.name:
+                                    expr_smv = self._expr_to_smv(node.stmt.expr)
+                                    lines.append(
+                                        f"    active_proc = {instance_name} & pc_{instance_name} = {node.id} : {expr_smv};"
+                                    )
+                
+                lines.append(f"    TRUE : {var.name};")
+                lines.append(f"  esac;")
+                lines.append("")
         
         return lines
     

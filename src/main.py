@@ -4,17 +4,29 @@ Main entry point for PML to SMV compiler
 
 import sys
 import os
-from antlr4 import *
-from grammar.PromelaLexer import PromelaLexer
-from grammar.PromelaParser import PromelaParser
-from grammar.PromelaVisitor import PromelaVisitor
+
+# Add current directory to path for imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# Try to use ANTLR-generated parser, fall back to simple parser
+try:
+    from antlr4 import *
+    from grammar.PromelaLexer import PromelaLexer
+    from grammar.PromelaParser import PromelaParser
+    from grammar.PromelaVisitor import PromelaVisitor
+    USE_ANTLR = True
+except ImportError:
+    USE_ANTLR = False
+
 from src.ast_nodes import *
+from src.simple_parser import parse_promela_file
 from src.inline_expander import InlineExpander
 from src.smv_generator import SMVGenerator
 
 
-class PromelaASTBuilder(PromelaVisitor):
-    """Visitor to build AST from parse tree"""
+if USE_ANTLR:
+    class PromelaASTBuilder(PromelaVisitor):
+        """Visitor to build AST from parse tree"""
     
     def __init__(self):
         self.program = Program()
@@ -370,18 +382,21 @@ class PromelaASTBuilder(PromelaVisitor):
 def compile_pml_to_smv(input_file, output_file):
     """Compile a Promela file to SMV"""
     try:
-        # Read input file
-        input_stream = FileStream(input_file, encoding='utf-8')
-        
-        # Lex and parse
-        lexer = PromelaLexer(input_stream)
-        stream = CommonTokenStream(lexer)
-        parser = PromelaParser(stream)
-        tree = parser.spec()
-        
-        # Build AST
-        builder = PromelaASTBuilder()
-        program = builder.visit(tree)
+        # Parse the input file
+        if USE_ANTLR:
+            # Use ANTLR-generated parser
+            input_stream = FileStream(input_file, encoding='utf-8')
+            lexer = PromelaLexer(input_stream)
+            stream = CommonTokenStream(lexer)
+            parser = PromelaParser(stream)
+            tree = parser.spec()
+            
+            # Build AST
+            builder = PromelaASTBuilder()
+            program = builder.visit(tree)
+        else:
+            # Use simple hand-written parser
+            program = parse_promela_file(input_file)
         
         # Expand inline macros
         expander = InlineExpander()
