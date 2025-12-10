@@ -305,12 +305,12 @@ class PromelaListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by PromelaParser#options.
-    def enterOptions(self, ctx:PromelaParser.OptionsContext):
+    # Enter a parse tree produced by PromelaParser#optionLists.
+    def enterOptionLists(self, ctx:PromelaParser.OptionListsContext):
         pass
 
-    # Exit a parse tree produced by PromelaParser#options.
-    def exitOptions(self, ctx:PromelaParser.OptionsContext):
+    # Exit a parse tree produced by PromelaParser#optionLists.
+    def exitOptionLists(self, ctx:PromelaParser.OptionListsContext):
         pass
 
 
