@@ -27,7 +27,7 @@ int pids[2];
 #define rightEstablished (state[1] == EstState)
 #define leftClosed (state[0] == ClosedState)
 
-proctype TCP(chan snd, chan rcv, int i) {
+proctype TCP(chan snd, rcv; int i) {
 	pids[i] = _pid;
 CLOSED:
 	state[i] = ClosedState;
@@ -136,4 +136,6 @@ active proctype network() {
 	:: _nr_pr < 3 -> break;
 	od
 end:
+	skip	
+	/*必须添加*/
 }
