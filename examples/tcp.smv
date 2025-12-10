@@ -1,0 +1,98 @@
+-- ========================================
+-- SMV Model Generated from Promela Source
+-- ========================================
+MODULE main
+
+-- ========== Variable Declarations ==========
+VAR
+  AtoN_data : array 0..0 of 0..255;
+  AtoN_head : 0..1;
+  AtoN_tail : 0..1;
+  NtoA_data : array 0..-1 of 0..255;
+  NtoA_head : 0..0;
+  NtoA_tail : 0..0;
+  BtoN_data : array 0..0 of 0..255;
+  BtoN_head : 0..1;
+  BtoN_tail : 0..1;
+  NtoB_data : array 0..-1 of 0..255;
+  NtoB_head : 0..0;
+  NtoB_tail : 0..0;
+  pc_network : 0..1;
+  pc_peerA : 0..1;
+  pc_peerB : 0..1;
+  active_proc : {network, peerA, peerB};
+  in_atomic : boolean;
+
+-- ========== Channel Definitions ==========
+DEFINE
+  AtoN_len := (AtoN_tail - AtoN_head + 1) mod 1;
+  AtoN_empty := (AtoN_head = AtoN_tail);
+  AtoN_full := (AtoN_len = 0);
+  AtoN_nempty := ! AtoN_empty;
+  AtoN_nfull := !AtoN_full;
+  NtoA_len := (NtoA_tail - NtoA_head + 0) mod 0;
+  NtoA_empty := (NtoA_head = NtoA_tail);
+  NtoA_full := (NtoA_len = -1);
+  NtoA_nempty := ! NtoA_empty;
+  NtoA_nfull := !NtoA_full;
+  BtoN_len := (BtoN_tail - BtoN_head + 1) mod 1;
+  BtoN_empty := (BtoN_head = BtoN_tail);
+  BtoN_full := (BtoN_len = 0);
+  BtoN_nempty := ! BtoN_empty;
+  BtoN_nfull := !BtoN_full;
+  NtoB_len := (NtoB_tail - NtoB_head + 0) mod 0;
+  NtoB_empty := (NtoB_head = NtoB_tail);
+  NtoB_full := (NtoB_len = -1);
+  NtoB_nempty := ! NtoB_empty;
+  NtoB_nfull := !NtoB_full;
+
+-- ========== State Transitions ==========
+ASSIGN
+  init(AtoN_head) := 0;
+  init(AtoN_tail) := 0;
+  init(NtoA_head) := 0;
+  init(NtoA_tail) := 0;
+  init(BtoN_head) := 0;
+  init(BtoN_tail) := 0;
+  init(NtoB_head) := 0;
+  init(NtoB_tail) := 0;
+  init(pc_network) := 0;
+  init(pc_peerA) := 0;
+  init(pc_peerB) := 0;
+  init(active_proc) := network;
+  init(in_atomic) := FALSE;
+  next(pc_network) := case
+    active_proc != network :  pc_network;
+    pc_network = 0 : 1;
+    pc_network = 1 : 1;
+    TRUE : pc_network;
+  esac;
+
+  next(pc_peerA) := case
+    active_proc != peerA :  pc_peerA;
+    pc_peerA = 0 : 1;
+    pc_peerA = 1 : 1;
+    TRUE : pc_peerA;
+  esac;
+
+  next(pc_peerB) := case
+    active_proc != peerB :  pc_peerB;
+    pc_peerB = 0 : 1;
+    pc_peerB = 1 : 1;
+    TRUE : pc_peerB;
+  esac;
+
+  next(active_proc) := case
+    in_atomic : active_proc;
+    TRUE : {network, peerA, peerB};
+  esac;
+
+  next(in_atomic) := case
+    TRUE : FALSE;
+  esac;
+
+
+-- ========== Fairness Constraints ==========
+FAIRNESS active_proc = network
+FAIRNESS active_proc = peerA
+FAIRNESS active_proc = peerB
