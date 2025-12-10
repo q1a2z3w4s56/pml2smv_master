@@ -80,6 +80,15 @@ class PromelaListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by PromelaParser#paramGroup.
+    def enterParamGroup(self, ctx:PromelaParser.ParamGroupContext):
+        pass
+
+    # Exit a parse tree produced by PromelaParser#paramGroup.
+    def exitParamGroup(self, ctx:PromelaParser.ParamGroupContext):
+        pass
+
+
     # Enter a parse tree produced by PromelaParser#init.
     def enterInit(self, ctx:PromelaParser.InitContext):
         pass
@@ -149,15 +158,6 @@ class PromelaListener(ParseTreeListener):
 
     # Exit a parse tree produced by PromelaParser#gotoStmt.
     def exitGotoStmt(self, ctx:PromelaParser.GotoStmtContext):
-        pass
-
-
-    # Enter a parse tree produced by PromelaParser#exprStmt.
-    def enterExprStmt(self, ctx:PromelaParser.ExprStmtContext):
-        pass
-
-    # Exit a parse tree produced by PromelaParser#exprStmt.
-    def exitExprStmt(self, ctx:PromelaParser.ExprStmtContext):
         pass
 
 
@@ -311,6 +311,15 @@ class PromelaListener(ParseTreeListener):
 
     # Exit a parse tree produced by PromelaParser#inlineCallStmt.
     def exitInlineCallStmt(self, ctx:PromelaParser.InlineCallStmtContext):
+        pass
+
+
+    # Enter a parse tree produced by PromelaParser#exprStmt.
+    def enterExprStmt(self, ctx:PromelaParser.ExprStmtContext):
+        pass
+
+    # Exit a parse tree produced by PromelaParser#exprStmt.
+    def exitExprStmt(self, ctx:PromelaParser.ExprStmtContext):
         pass
 
 
