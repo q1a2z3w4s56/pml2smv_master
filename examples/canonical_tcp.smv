@@ -76,14 +76,14 @@ ASSIGN
   esac;
 
   next(pc_init) := case
-    active_proc != init : pc_init;
+    active_proc != init :  pc_init;
     pc_init = 0 : 1;
     pc_init = 1 : 1;
     TRUE : pc_init;
   esac;
 
   next(pc_network) := case
-    active_proc != network : pc_network;
+    active_proc != network :  pc_network;
     pc_network = 0 : 1;
     pc_network = 1 : 1;
     TRUE : pc_network;
