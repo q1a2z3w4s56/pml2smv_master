@@ -24,6 +24,7 @@ from src.ast_nodes import *
 from src.simple_parser import parse_promela_file
 from src.inline_expander import InlineExpander
 from src.smv_generator import SMVGenerator
+from src.preprocessor import PromelaPreprocessor
 
 
 if USE_ANTLR:
@@ -56,7 +57,7 @@ if USE_ANTLR:
                 var = self.visit(ctx.varDecl())
                 if isinstance(var, list):
                     self.program.globals.extend(var)
-                else:
+                elif var is not None:  # Guard against None
                     self.program.globals.append(var)
             elif ctx.proctype():
                 proc = self.visit(ctx.proctype())
@@ -71,7 +72,8 @@ if USE_ANTLR:
                 self.program.typedefs.append(typedef)
             elif ctx.chanDecl():
                 chan = self.visit(ctx.chanDecl())
-                self.program.globals.append(chan)  # 或添加到适当列表
+                if chan is not None:  # Guard against None
+                    self.program.globals.append(chan)
         
         def visitChanDecl(self, ctx):
             name = ctx.ID().getText()
@@ -332,6 +334,17 @@ if USE_ANTLR:
             vars = [id_node.getText() for id_node in ids[1:]]
             return ReceiveStmt(channel, vars, is_poll=True)
         
+        def visitReceiveArrowStmt(self, ctx):
+            """Visit receive with arrow: ch ? msg -> stmt"""
+            ids = self._ensure_list(ctx.ID())
+            channel = ids[0].getText() if ids else ""
+            vars = [id_node.getText() for id_node in ids[1:]]
+            receive_stmt = ReceiveStmt(channel, vars, is_poll=False)
+            # The arrow statement combines receive with a following statement
+            following_stmt = self.visit(ctx.stmt())
+            # Return as a sequence
+            return Sequence([receive_stmt, following_stmt])
+        
         def visitRunStmt(self, ctx):
             procname = ctx.ID().getText()
             args_ctx = self._ensure_list(ctx.expr())
@@ -442,6 +455,14 @@ if USE_ANTLR:
             channel = ctx.ID().getText()
             return NfullExpr(channel)
         
+        def visitPidExpr(self, ctx):
+            """Visit _pid built-in variable"""
+            return IdExpr('_pid')
+        
+        def visitNrPrExpr(self, ctx):
+            """Visit _nr_pr built-in variable"""
+            return IdExpr('_nr_pr')
+        
         def visitEnabledExpr(self, ctx):
             expr = self.visit(ctx.expr())
             return EnabledExpr(expr)
@@ -458,8 +479,14 @@ def compile_pml_to_smv(input_file, output_file):
     try:
         # Parse the input file
         if USE_ANTLR:
-            # Use ANTLR-generated parser
-            input_stream = FileStream(input_file, encoding='utf-8')
+            # Preprocess the file to expand #define macros
+            preprocessor = PromelaPreprocessor()
+            with open(input_file, 'r', encoding='utf-8') as f:
+                source_code = f.read()
+            preprocessed_code = preprocessor.preprocess(source_code)
+            
+            # Use ANTLR-generated parser on preprocessed code
+            input_stream = InputStream(preprocessed_code)
             lexer = PromelaLexer(input_stream)
             stream = CommonTokenStream(lexer)
             parser = PromelaParser(stream)

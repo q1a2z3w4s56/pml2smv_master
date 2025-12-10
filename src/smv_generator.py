@@ -28,7 +28,7 @@ class SMVGenerator:
         
         # Register channels
         for var in self.program.globals:
-            if var.is_channel:
+            if var is not None and var.is_channel:  # Guard against None
                 self.channel_encoder.register_channel(var)
         
         # Build mtype map
@@ -37,23 +37,30 @@ class SMVGenerator:
         # Determine process instances
         self._determine_process_instances()
         
-        # Generate module header
+        # Generate module header with source information
+        lines.append("-- ========================================")
+        lines.append("-- SMV Model Generated from Promela Source")
+        lines.append("-- ========================================")
         lines.append("MODULE main")
         lines.append("")
         
         # Generate VAR section
+        lines.append("-- ========== Variable Declarations ==========")
         lines.extend(self._generate_var_section())
         lines.append("")
         
         # Generate DEFINE section
+        lines.append("-- ========== Channel Definitions ==========")
         lines.extend(self._generate_define_section())
         lines.append("")
         
         # Generate ASSIGN section
+        lines.append("-- ========== State Transitions ==========")
         lines.extend(self._generate_assign_section())
         lines.append("")
         
         # Generate FAIRNESS constraints
+        lines.append("-- ========== Fairness Constraints ==========")
         lines.extend(self._generate_fairness_section())
         
         return "\n".join(lines)
@@ -90,6 +97,8 @@ class SMVGenerator:
         
         # Global variables
         for var in self.program.globals:
+            if var is None:  # Guard against None
+                continue
             if var.is_channel:
                 # Channel variables
                 lines.extend(self.channel_encoder.generate_channel_vars(var.name))
@@ -140,6 +149,8 @@ class SMVGenerator:
         
         # Initialize global variables
         for var in self.program.globals:
+            if var is None:  # Guard against None
+                continue
             if var.is_channel:
                 # Channel initialization
                 lines.extend(self.channel_encoder.generate_channel_init(var.name))
@@ -194,6 +205,8 @@ class SMVGenerator:
         
         # For each global variable, generate next() assignments
         for var in self.program.globals:
+            if var is None:  # Guard against None
+                continue
             if var.is_channel:
                 # Skip channels for now - they need special handling
                 continue
