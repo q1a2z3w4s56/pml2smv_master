@@ -170,28 +170,38 @@ if USE_ANTLR:
             """Visit typename"""
             return ctx.getText()
         
+
+
         def visitProctype(self, ctx):
             """Visit proctype declaration"""
             is_active = ctx.getChild(0).getText() == 'active'
             active_count = None
             
-            name_idx = 2 if is_active else 1
             name = ctx.ID().getText()
             
-            # Get parameters
+            # Get parameters - 使用 paramGroup 规则
             params = []
-            for var_ctx in self._ensure_list(ctx.varDecl()):
-                var = self.visit(var_ctx)
-                if isinstance(var, list):
-                    params.extend(var)
-                else:
-                    params.append(var)
+            for param_group_ctx in self._ensure_list(ctx. paramGroup()):
+                # 获取类型名
+                typename = self. visit(param_group_ctx. typename())
+                
+                # 获取该类型下的所有参数名（ID 列表）
+                for id_token in param_group_ctx.ID():
+                    param_name = id_token.getText()
+                    params.append(VarDecl(typename, param_name))
             
             # Get body
             body = self.visit(ctx.sequence())
             
             return Proctype(name, params, body, is_active, active_count)
-        
+
+        def visitParamGroup(self, ctx):
+            """Visit parameter group"""
+            typename = self.visit(ctx.typename())
+            params = []
+            for id_token in ctx.ID():
+                params.append(VarDecl(typename, id_token.getText()))
+            return params
         def visitInit(self, ctx):
             """Visit init process"""
             body = self.visit(ctx.sequence())
