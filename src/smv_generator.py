@@ -74,22 +74,46 @@ class SMVGenerator:
                 value += 1
     
     def _determine_process_instances(self):
-        """Determine all process instances (active proctypes and init)"""
+        """Determine all process instances (active proctypes, init, and run-created processes)"""
         # Add init if present
         if self.program.init:
-            self.process_instances.append(('init', 0, True))
+            self. process_instances.append(('init', 0, True))
+            # 扫描 init 块中的 run 语句，添加动态创建的进程
+            self._scan_run_statements(self.program.init. body)
         
         # Add active proctypes
         for proctype in self.program.proctypes:
             if proctype.is_active:
                 count = 1
                 if proctype.active_count:
-                    # Extract count from expression
                     if isinstance(proctype.active_count, NumberExpr):
                         count = proctype.active_count.value
                 
                 for i in range(count):
                     self.process_instances.append((proctype.name, i, True))
+
+    def _scan_run_statements(self, body):
+        """递归扫描 body 中的 run 语句并添加对应的进程实例"""
+        if body is None:
+            return
+        
+        if isinstance(body, Sequence):
+            for stmt in body.steps:
+                self._scan_run_statements(stmt)
+        elif isinstance(body, RunStmt):
+            # 找到 run 语句，添加进程实例
+            proc_name = body.procname
+            # 计算该进程已有的实例数
+            existing_count = sum(1 for p, _, _ in self.process_instances if p == proc_name)
+            self.process_instances.append((proc_name, existing_count, True))
+        elif isinstance(body, (AtomicStmt, DstepStmt, BlockStmt)):
+            self._scan_run_statements(body.body)
+        elif isinstance(body, IfStmt):
+            for guard, seq in body.options:
+                self._scan_run_statements(seq)
+        elif isinstance(body, DoStmt):
+            for guard, seq in body.options:
+                self._scan_run_statements(seq)
     
     def _generate_var_section(self):
         """Generate VAR section"""
@@ -278,75 +302,60 @@ class SMVGenerator:
         """Generate PC transitions for a process"""
         lines = []
         instance_name = self._get_instance_name(proc_name, instance)
-        cfg = self.cfgs.get(proc_name)
+        cfg = self.cfgs. get(proc_name)
         
         if not cfg:
             return lines
         
         lines.append(f"  next(pc_{instance_name}) := case")
-        lines.append(f"    active_proc != {instance_name} : pc_{instance_name};")
+        lines.append(f"    active_proc != {instance_name} :  pc_{instance_name};")
         
         # Generate transitions for each PC value
         for node in cfg.nodes:
-            if node == cfg.entry:
-                # Entry node
-                if len(node.successors) > 0:
-                    succ_id = node.successors[0].id
-                    lines.append(f"    pc_{instance_name} = {node.id} : {succ_id};")
-            elif node == cfg.exit:
+            if node == cfg.exit: 
                 # Exit node - stay at exit
+                lines.append(f"    pc_{instance_name} = {node. id} : {node.id};")
+                continue
+            
+            # 处理有多个后继的节点（分支点）
+            if len(node. successors) > 1:
+                # 这是一个分支节点，生成非确定性选择
+                succ_ids = [str(s.id) for s in node.successors]
+                lines.append(f"    pc_{instance_name} = {node.id} : {{{', '.join(succ_ids)}}};")
+                continue
+            
+            if len(node.successors) == 0:
+                # 没有后继，保持原状态
                 lines.append(f"    pc_{instance_name} = {node.id} : {node.id};")
-            elif node.stmt:
-                # Regular statement node
-                stmt = node.stmt
-                
-                # Generate guard and next PC based on statement type
-                if isinstance(stmt, ExprStmt):
-                    # Condition guard
-                    guard = self._expr_to_smv(stmt.expr)
-                    if len(node.successors) > 0:
-                        succ_id = node.successors[0].id
-                        lines.append(f"    pc_{instance_name} = {node.id} & ({guard}) : {succ_id};")
-                    else:
-                        lines.append(f"    pc_{instance_name} = {node.id} & ({guard}) : {node.id};")
-                
-                elif isinstance(stmt, (AssignStmt, ArrayAssignStmt, FieldAssignStmt,
-                                      SkipStmt, AssertStmt)):
-                    # Simple transition
-                    if len(node.successors) > 0:
-                        succ_id = node.successors[0].id
-                        lines.append(f"    pc_{instance_name} = {node.id} : {succ_id};")
-                
-                elif isinstance(stmt, SendStmt):
-                    # Send: guard on channel not full
-                    guard, _ = self.channel_encoder.encode_send(stmt.channel, stmt.exprs)
-                    if len(node.successors) > 0:
-                        succ_id = node.successors[0].id
-                        lines.append(f"    pc_{instance_name} = {node.id} & {guard} : {succ_id};")
-                
-                elif isinstance(stmt, ReceiveStmt):
-                    # Receive: guard on channel not empty
-                    guard, _ = self.channel_encoder.encode_receive(stmt.channel, stmt.vars)
-                    if len(node.successors) > 0:
-                        succ_id = node.successors[0].id
-                        lines.append(f"    pc_{instance_name} = {node.id} & {guard} : {succ_id};")
-                
-                elif isinstance(stmt, (GotoStmt, BreakStmt)):
-                    # Jump statements
-                    if len(node.successors) > 0:
-                        succ_id = node.successors[0].id
-                        lines.append(f"    pc_{instance_name} = {node.id} : {succ_id};")
-                
-                else:
-                    # Other statements - simple transition
-                    if len(node.successors) > 0:
-                        succ_id = node.successors[0].id
-                        lines.append(f"    pc_{instance_name} = {node.id} : {succ_id};")
+                continue
+            
+            # 单个后继的情况
+            succ_id = node.successors[0].id
+            
+            if node.stmt is None:
+                # Entry node 或 merge node
+                lines.append(f"    pc_{instance_name} = {node.id} : {succ_id};")
+            elif isinstance(node.stmt, ExprStmt):
+                # 条件守卫 - 需要检查条件是否为真
+                guard = self._expr_to_smv(node.stmt.expr)
+                # 处理特殊的 timeout 表达式
+                if isinstance(node.stmt.expr, TimeoutExpr):
+                    guard = "TRUE"  # 简化处理，或者用更复杂的逻辑
+                lines.append(f"    pc_{instance_name} = {node.id} & ({guard}) : {succ_id};")
+            elif isinstance(node.stmt, SendStmt):
+                # Send:  guard on channel not full
+                guard, _ = self. channel_encoder.encode_send(node.stmt.channel, node.stmt.exprs)
+                lines.append(f"    pc_{instance_name} = {node.id} & {guard} : {succ_id};")
+            elif isinstance(node.stmt, ReceiveStmt):
+                # Receive: guard on channel not empty
+                guard, _ = self.channel_encoder.encode_receive(node.stmt.channel, node.stmt.vars)
+                lines.append(f"    pc_{instance_name} = {node. id} & {guard} : {succ_id};")
+            elif isinstance(node.stmt, (GotoStmt, BreakStmt)):
+                # 跳转语句 - 无条件转换
+                lines.append(f"    pc_{instance_name} = {node.id} : {succ_id};")
             else:
-                # Node without statement (merge point)
-                if len(node.successors) > 0:
-                    succ_id = node.successors[0].id
-                    lines.append(f"    pc_{instance_name} = {node.id} : {succ_id};")
+                # 其他语句 - 无条件转换
+                lines. append(f"    pc_{instance_name} = {node.id} : {succ_id};")
         
         lines.append(f"    TRUE : pc_{instance_name};")
         lines.append(f"  esac;")
@@ -486,6 +495,22 @@ class SMVGenerator:
         
         elif isinstance(expr, NfullExpr):
             return f"{expr.channel}_nfull"
+
+
+        elif isinstance(expr, TimeoutExpr):
+            return "TRUE"  # 简化：timeout 作为非确定性选择
+
+        elif isinstance(expr, IdExpr):
+            # 处理特殊变量
+            if expr.name == '_pid':
+                # 返回进程 ID，这里需要更复杂的处理
+                return "0"  # 简化处理
+            elif expr.name == '_nr_pr':
+                # 返回进程数量
+                return str(len(self.process_instances))
+            elif expr.name in self.mtype_map:
+                return str(self.mtype_map[expr.name])
+            return expr.name
         
         else:
             return "0"  # Fallback
