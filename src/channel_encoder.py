@@ -46,6 +46,9 @@ class ChannelEncoder:
         
         info = self.channels[channel_name]
         size = info['size']
+        if hasattr(size, 'value'):
+            size = size.value
+        size = int(size)
         types = info['types']
         ranges = info['type_ranges']
         
@@ -85,6 +88,11 @@ class ChannelEncoder:
         info = self.channels[channel_name]
         size = info['size']
         
+        # 确保 size 是整数值
+        if hasattr(size, 'value'):
+            size = size.value
+        size = int(size)
+        
         lines = []
         
         # Length calculation
@@ -97,7 +105,7 @@ class ChannelEncoder:
         lines.append(f"  {channel_name}_full := ({channel_name}_len = {size-1});")
         
         # Nempty (not empty)
-        lines.append(f"  {channel_name}_nempty := !{channel_name}_empty;")
+        lines.append(f"  {channel_name}_nempty := ! {channel_name}_empty;")
         
         # Nfull (not full)
         lines.append(f"  {channel_name}_nfull := !{channel_name}_full;")
