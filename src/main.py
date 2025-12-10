@@ -269,15 +269,26 @@ if USE_ANTLR:
             return FieldAssignStmt(var, field, expr)
         
         def visitIfStmt(self, ctx):
-            # Use visitOptions to reliably get a list of (guard, body) pairs
-            options = self.visitOptions(ctx)
+            # 改为访问 optionLists() 而不是 option()
+            options = self.visitOptionLists(ctx. optionLists())
             return IfStmt(options)
-        
+
         def visitDoStmt(self, ctx):
-            # Use visitOptions to reliably get a list of (guard, body) pairs
-            options = self.visitOptions(ctx)
+            # 改为访问 optionLists() 而不是 option()
+            options = self.visitOptionLists(ctx.optionLists())
             return DoStmt(options)
         
+        def visitOptionLists(self, ctx):
+            """Visit optionLists rule and return list of (guard, body) pairs"""
+            options = []
+            for option_ctx in ctx.option():
+                guard = None
+                if option_ctx.expr():
+                    guard = self.visit(option_ctx.expr())
+                body = self.visit(option_ctx.sequence())
+                options.append((guard, body))
+            return options
+
         def visitAtomicStmt(self, ctx):
             body = self.visit(ctx.sequence())
             return AtomicStmt(body)
