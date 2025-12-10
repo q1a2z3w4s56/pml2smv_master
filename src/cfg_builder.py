@@ -136,12 +136,16 @@ class CFGBuilder:
             return None  # No fallthrough
         
         elif isinstance(stmt, LabeledStmt):
-            # Create a node for the labeled statement
-            node = self.build_statement(stmt.stmt, entry_node)
-            if node and stmt.label:
-                node.label = stmt.label
-                self.current_cfg.labels[stmt.label] = node
-            return node
+            # 为标签创建一个显式的入口节点
+            label_node = CFGNode(label=stmt.label)
+            entry_node. add_successor(label_node)
+            
+            # 注册标签
+            self.current_cfg.labels[stmt.label] = label_node
+            
+            # 构建被标记的语句
+            inner_last = self.build_statement(stmt. stmt, label_node)
+            return inner_last
         
         elif isinstance(stmt, GotoStmt):
             # Goto jumps to a label
