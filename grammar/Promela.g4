@@ -1,139 +1,120 @@
-// models: phi1, phi2, phi3, phi5
-mtype = { SYN, FIN, ACK, ABORT, CLOSE, RST, OPEN }
+grammar Promela;
 
-chan AtoN = [1] of { mtype };
-chan NtoA = [0] of { mtype };
-chan BtoN = [1] of { mtype };
-chan NtoB = [0] of { mtype };
+// Top-level specification
+spec: unit* EOF;
 
-int state[2];
-int pids[2];
+// Top-level units
+unit: chanDecl
+    | mtypeDecl
+    | typedefDecl
+    | varDecl
+    | proctype
+    | init
+    | inlineDecl
+    ;
 
-#define ClosedState    0
-#define ListenState    1
-#define SynSentState   2
-#define SynRecState    3
-#define EstState       4
-#define FinW1State     5
-#define CloseWaitState 6
-#define FinW2State     7
-#define ClosingState   8
-#define LastAckState   9
-#define TimeWaitState  10
-#define EndState       -1
+// Channel declaration
+chanDecl: 'chan' ID '=' '[' expr ']' 'of' '{' typename (',' typename)* '}' ';'?;
 
-#define leftConnecting (state[0] == ListenState && state[1] == SynSentState)
-#define leftEstablished (state[0] == EstState)
-#define rightEstablished (state[1] == EstState)
-#define leftClosed (state[0] == ClosedState)
+// Mtype declaration
+mtypeDecl: 'mtype' '=' '{' ID (',' ID)* '}' ';'?;
 
-proctype TCP(chan snd, chan rcv, int i) {
-	pids[i] = _pid;
-CLOSED:
-	state[i] = ClosedState;
-	if
-	/* Passive open */
-	:: goto LISTEN;
-	/* Active open */
-	:: snd ! SYN; goto SYN_SENT;
-	/* Terminate */
-	:: goto end;
-	fi
-LISTEN:
-	state[i] = ListenState;
-	if
-	:: rcv ? SYN -> snd ! SYN; 
-	                snd ! ACK; goto SYN_RECEIVED;
-	/* Simultaneous LISTEN */
-	:: timeout -> goto CLOSED; 
-	/* recently added the 'timout.' - Max */
-	fi
-SYN_SENT:
-	state[i] = SynSentState;
-	if
-	:: rcv ? SYN;
-		if
-		/* Standard behavior */
-		:: rcv ? ACK -> snd ! ACK; goto ESTABLISHED;
-		/* Simultaneous open */
-		:: snd ! ACK; goto SYN_RECEIVED;
-		fi
-	/* Timeout */
-	:: timeout -> goto CLOSED;
-	fi
-SYN_RECEIVED:
-	state[i] = SynRecState;
-	rcv ? ACK; goto ESTABLISHED;
-	/* We may want to consider putting a timeout -> CLOSED here. */
-ESTABLISHED:
-	state[i] = EstState;
-	if
-	/* Close - initiator sequence */
-	:: snd ! FIN; goto FIN_WAIT_1;
-	/* Close - responder sequence */
-	:: rcv ? FIN -> snd ! ACK; goto CLOSE_WAIT;
-	fi
-FIN_WAIT_1:
-	state[i] = FinW1State;
-	if
-	/* Simultaneous close */
-	:: rcv ? FIN -> snd ! ACK; goto CLOSING;
-	/* Standard close */
-	:: rcv ? ACK -> goto FIN_WAIT_2;
-	fi
-CLOSE_WAIT:
-	state[i] = CloseWaitState;
-	snd ! FIN; goto LAST_ACK;
-FIN_WAIT_2:
-	state[i] = FinW2State;
-	rcv ? FIN -> snd ! ACK; goto TIME_WAIT;
-CLOSING:
-	state[i] = ClosingState;
-	rcv ? ACK -> goto TIME_WAIT;
-LAST_ACK:
-	state[i] = LastAckState;
-	rcv ? ACK -> goto CLOSED;
-TIME_WAIT:
-	state[i] = TimeWaitState;
-	goto CLOSED;
-end:
-	state[i] = EndState;
-}
+// Typedef declaration
+typedefDecl: 'typedef' ID '{' varDecl+ '}' ';'?;
 
-init {
-	state[0] = ClosedState;
-	state[1] = ClosedState;
-	run TCP(AtoN, NtoA, 0);
-	run TCP(BtoN, NtoB, 1);
-}
+// Variable declaration
+varDecl: typename ID ('[' expr ']')? ('=' expr)? (',' ID ('[' expr ']')? ('=' expr)?)* ';'?;
 
-active proctype network() {
-	do
-	:: AtoN ? SYN -> 
-		if
-		:: NtoB ! SYN;
-		fi unless timeout;
-	:: BtoN ? SYN -> 
-		if
-		:: NtoA ! SYN;
-		fi unless timeout;
-	:: AtoN ? FIN -> 
-		if
-		:: NtoB ! FIN;
-		fi unless timeout;
-	:: BtoN ? FIN -> 
-		if
-		:: NtoA ! FIN;
-		fi unless timeout;
-	:: AtoN ? ACK -> 
-		if
-		:: NtoB ! ACK;
-		fi unless timeout;
-	:: BtoN ? ACK -> 
-		if
-		:: NtoA ! ACK;
-		fi unless timeout;
-	:: _nr_pr < 3 -> break;
-	od
-end:
-}
+// Type names
+typename: 'bit' | 'bool' | 'byte' | 'short' | 'int' | 'mtype' | 'chan' | 'pid' | ID;
+
+// Proctype declaration
+proctype: ('active' ('[' expr ']')?)? 'proctype' ID '(' (varDecl (',' varDecl)*)? ')' '{' sequence '}';
+
+// Init process
+init: 'init' '{' sequence '}';
+
+// Inline declaration
+inlineDecl: 'inline' ID '(' (ID (',' ID)*)? ')' '{' sequence '}';
+
+// Sequence of steps
+sequence: (varDecl | step)*;
+
+// Step (statement or unless)
+step: stmt ('unless' stmt)?;
+
+// Statements
+stmt: 'skip' ';'?                                                          # skipStmt
+    | 'break' ';'?                                                         # breakStmt
+    | ID ':' stmt                                                          # labeledStmt
+    | 'goto' ID ';'?                                                       # gotoStmt
+    | expr ';'?                                                            # exprStmt
+    | ID '=' expr ';'?                                                     # assignStmt
+    | ID '[' expr ']' '=' expr ';'?                                        # arrayAssignStmt
+    | ID '.' ID '=' expr ';'?                                              # fieldAssignStmt
+    | 'if' optionLists 'fi'                                                # ifStmt
+    | 'do' optionLists 'od'                                                # doStmt
+    | 'atomic' '{' sequence '}'                                            # atomicStmt
+    | 'd_step' '{' sequence '}'                                            # dstepStmt
+    | '{' sequence '}'                                                     # blockStmt
+    | 'assert' '(' expr ')' ';'?                                           # assertStmt
+    | 'printf' '(' STRING (',' expr)* ')' ';'?                             # printfStmt
+    | 'printm' '(' expr ')' ';'?                                           # printmStmt
+    | ID '!' expr (',' expr)* ';'?                                         # sendStmt
+    | ID '?' ID (',' ID)* ';'?                                             # receiveStmt
+    | ID '?' '<' ID (',' ID)* '>' ';'?                                     # receivePollStmt
+    | ID '?' ID (',' ID)* '->' stmt                                        # receiveArrowStmt
+    | 'run' ID '(' (expr (',' expr)*)? ')' ';'?                            # runStmt
+    | ID '(' (expr (',' expr)*)? ')' ';'?                                  # inlineCallStmt
+    ;
+
+// Option lists for if/do
+optionLists: option+;
+
+// Single option
+option: '::' (expr '->')? sequence;
+
+// Expressions (with precedence)
+expr: NUMBER                                                               # numberExpr
+    | 'true'                                                               # trueExpr
+    | 'false'                                                              # falseExpr
+    | STRING                                                               # stringExpr
+    | ID                                                                   # idExpr
+    | '_pid'                                                               # pidExpr
+    | '_nr_pr'                                                             # nrPrExpr
+    | 'timeout'                                                            # timeoutExpr
+    | 'np_'                                                                # nonProgressExpr
+    | '(' expr ')'                                                         # parenExpr
+    | expr ('*'|'/'|'%') expr                                              # mulDivModExpr
+    | expr ('+'|'-') expr                                                  # addSubExpr
+    | expr ('<<'|'>>') expr                                                # shiftExpr
+    | expr ('<'|'>'|'<='|'>=') expr                                        # relationalExpr
+    | expr ('=='|'!=') expr                                                # equalityExpr
+    | expr '&' expr                                                        # bitwiseAndExpr
+    | expr '^' expr                                                        # bitwiseXorExpr
+    | expr '|' expr                                                        # bitwiseOrExpr
+    | expr '&&' expr                                                       # logicalAndExpr
+    | expr '||' expr                                                       # logicalOrExpr
+    | '!' expr                                                             # logicalNotExpr
+    | '~' expr                                                             # bitwiseNotExpr
+    | '-' expr                                                             # unaryMinusExpr
+    | '+' expr                                                             # unaryPlusExpr
+    | expr '++'                                                            # postIncrExpr
+    | expr '--'                                                            # postDecrExpr
+    | ID '[' expr ']'                                                      # arrayAccessExpr
+    | ID '.' ID                                                            # fieldAccessExpr
+    | 'len' '(' ID ')'                                                     # lenExpr
+    | 'empty' '(' ID ')'                                                   # emptyExpr
+    | 'full' '(' ID ')'                                                    # fullExpr
+    | 'nempty' '(' ID ')'                                                  # nemptyExpr
+    | 'nfull' '(' ID ')'                                                   # nfullExpr
+    | 'enabled' '(' expr ')'                                               # enabledExpr
+    ;
+
+// Lexer rules
+NUMBER: [0-9]+;
+ID: [a-zA-Z_][a-zA-Z0-9_]*;
+STRING: '"' (~["\\\r\n] | '\\' .)* '"';
+COMMENT: '/*' .*? '*/' -> skip;
+LINE_COMMENT: '//' ~[\r\n]* -> skip;
+WS: [ \t\r\n]+ -> skip;
