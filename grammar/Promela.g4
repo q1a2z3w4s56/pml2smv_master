@@ -7,11 +7,14 @@ spec: unit* EOF;
 unit
     : mtypeDecl
     | varDecl
+    | chanDecl  
     | proctype
     | init
     | inlineDecl
     | typedefDecl
     ;
+
+chanDecl: 'chan' ID '=' '[' expr ']' 'of' '{' typename (',' typename)* '}' ';'? ;
 
 mtypeDecl: 'mtype' '=' '{' ID (',' ID)* '}' ';'? ;
 
@@ -40,7 +43,7 @@ init: 'init' '{' sequence '}' ;
 
 inlineDecl: 'inline' ID '(' (ID (',' ID)*)? ')' '{' sequence '}' ;
 
-sequence: step (';'? step)* ';'? ;
+sequence: (varDecl | step) (';'? (varDecl | step))* ';'? ;
 
 step
     : stmt
@@ -56,8 +59,8 @@ stmt
     | ID '=' expr                                     # AssignStmt
     | ID '[' expr ']' '=' expr                        # ArrayAssignStmt
     | ID '.' ID '=' expr                              # FieldAssignStmt
-    | 'if' options 'fi'                               # IfStmt
-    | 'do' options 'od'                               # DoStmt
+    | 'if' option 'fi'                            # IfStmt
+    | 'do' option 'od'                            # DoStmt
     | 'atomic' '{' sequence '}'                       # AtomicStmt
     | 'd_step' '{' sequence '}'                       # DstepStmt
     | '{' sequence '}'                                # BlockStmt
@@ -67,19 +70,20 @@ stmt
     | ID '!' expr (',' expr)*                         # SendStmt
     | ID '?' ID (',' ID)*                             # ReceiveStmt
     | ID '?' '<' ID (',' ID)* '>'                     # ReceivePollStmt
-    | 'run' ID '(' (expr (',' expr)*)? ')'           # RunStmt
-    | ID '(' (expr (',' expr)*)? ')'                 # InlineCallStmt
+    | 'run' ID '(' (expr (',' expr)*)? ')'            # RunStmt
+    | ID '(' (expr (',' expr)*)? ')'                  # InlineCallStmt
     ;
 
-options: '::' sequence ('::' sequence)* ;
+options: option+ ;
 
+option: '::' (expr '->')? sequence ;
 expr
     : '(' expr ')'                                    # ParenExpr
     | expr ('*' | '/' | '%') expr                     # MulDivModExpr
     | expr ('+' | '-') expr                           # AddSubExpr
     | expr ('<<' | '>>') expr                         # ShiftExpr
-    | expr ('<' | '<=' | '>' | '>=') expr            # RelationalExpr
-    | expr ('==' | '!=') expr                        # EqualityExpr
+    | expr ('<' | '<=' | '>' | '>=') expr             # RelationalExpr
+    | expr ('==' | '!=') expr                         # EqualityExpr
     | expr '&' expr                                   # BitwiseAndExpr
     | expr '^' expr                                   # BitwiseXorExpr
     | expr '|' expr                                   # BitwiseOrExpr
@@ -89,8 +93,10 @@ expr
     | '~' expr                                        # BitwiseNotExpr
     | '-' expr                                        # UnaryMinusExpr
     | '+' expr                                        # UnaryPlusExpr
-    | expr '++' | '++' expr                           # IncrementExpr
-    | expr '--' | '--' expr                           # DecrementExpr
+    | expr '++'                                       # PostIncrementExpr
+    | '++' expr                                       # PreIncrementExpr
+    | expr '--'                                       # PostDecrementExpr
+    | '--' expr                                       # PreDecrementExpr
     | ID '[' expr ']'                                 # ArrayAccessExpr
     | ID '.' ID                                       # FieldAccessExpr
     | 'len' '(' ID ')'                                # LenExpr
@@ -112,7 +118,7 @@ expr
 
 NUMBER: [0-9]+ ;
 ID: [a-zA-Z_][a-zA-Z0-9_]* ;
-STRING: '"' (~["\r\n] | '\\' .)* '"' ;
+STRING: '"' (~["\\\r\n] | '\\' .)* '"' ;
 
 COMMENT: '/*' .*? '*/' -> skip ;
 LINE_COMMENT: '//' ~[\r\n]* -> skip ;
