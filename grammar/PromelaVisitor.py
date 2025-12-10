@@ -174,8 +174,8 @@ class PromelaVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by PromelaParser#options.
-    def visitOptions(self, ctx:PromelaParser.OptionsContext):
+    # Visit a parse tree produced by PromelaParser#optionLists.
+    def visitOptionLists(self, ctx:PromelaParser.OptionListsContext):
         return self.visitChildren(ctx)
 
 
