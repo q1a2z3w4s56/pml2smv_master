@@ -1,0 +1,3890 @@
+# Generated from Promela.g4 by ANTLR 4.13.2
+# encoding: utf-8
+from antlr4 import *
+from io import StringIO
+import sys
+if sys.version_info[1] > 5:
+	from typing import TextIO
+else:
+	from typing.io import TextIO
+
+def serializedATN():
+    return [
+        4,1,80,463,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
+        2,14,7,14,2,15,7,15,1,0,5,0,34,8,0,10,0,12,0,37,9,0,1,0,1,0,1,1,
+        1,1,1,1,1,1,1,1,1,1,1,1,3,1,48,8,1,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,
+        2,1,2,1,2,1,2,5,2,61,8,2,10,2,12,2,64,9,2,1,2,1,2,3,2,68,8,2,1,3,
+        1,3,1,3,1,3,1,3,1,3,5,3,76,8,3,10,3,12,3,79,9,3,1,3,1,3,3,3,83,8,
+        3,1,4,1,4,1,4,1,4,4,4,89,8,4,11,4,12,4,90,1,4,1,4,3,4,95,8,4,1,5,
+        1,5,1,5,1,5,1,5,1,5,3,5,103,8,5,1,5,1,5,3,5,107,8,5,1,5,1,5,1,5,
+        1,5,1,5,1,5,3,5,115,8,5,1,5,1,5,3,5,119,8,5,5,5,121,8,5,10,5,12,
+        5,124,9,5,1,5,3,5,127,8,5,1,6,1,6,1,7,1,7,1,7,1,7,1,7,3,7,136,8,
+        7,1,7,1,7,1,7,1,7,1,7,1,7,5,7,144,8,7,10,7,12,7,147,9,7,3,7,149,
+        8,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,5,7,162,8,7,10,7,
+        12,7,165,9,7,3,7,167,8,7,1,7,1,7,1,7,1,7,1,7,3,7,174,8,7,1,8,1,8,
+        1,8,1,8,1,8,1,9,1,9,1,9,1,9,1,9,1,9,5,9,187,8,9,10,9,12,9,190,9,
+        9,3,9,192,8,9,1,9,1,9,1,9,1,9,1,9,1,10,1,10,3,10,201,8,10,1,10,3,
+        10,204,8,10,1,10,1,10,3,10,208,8,10,5,10,210,8,10,10,10,12,10,213,
+        9,10,1,10,3,10,216,8,10,1,11,1,11,1,11,1,11,1,11,3,11,223,8,11,1,
+        12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,
+        12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,
+        12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,
+        12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,5,12,275,8,
+        12,10,12,12,12,278,9,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,
+        1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,5,12,296,8,12,10,12,12,12,
+        299,9,12,1,12,1,12,1,12,1,12,1,12,5,12,306,8,12,10,12,12,12,309,
+        9,12,1,12,1,12,1,12,1,12,1,12,1,12,5,12,317,8,12,10,12,12,12,320,
+        9,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,5,12,329,8,12,10,12,12,12,
+        332,9,12,3,12,334,8,12,1,12,1,12,1,12,1,12,1,12,1,12,5,12,342,8,
+        12,10,12,12,12,345,9,12,3,12,347,8,12,1,12,3,12,350,8,12,1,13,4,
+        13,353,8,13,11,13,12,13,354,1,14,1,14,1,14,1,14,3,14,361,8,14,1,
+        14,1,14,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,
+        15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,
+        15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,
+        15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,
+        15,1,15,1,15,1,15,1,15,1,15,1,15,3,15,422,8,15,1,15,1,15,1,15,1,
+        15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,
+        15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,
+        15,1,15,1,15,1,15,1,15,5,15,458,8,15,10,15,12,15,461,9,15,1,15,0,
+        1,30,16,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,0,6,4,0,1,1,10,
+        10,12,17,76,76,1,0,46,48,1,0,49,50,1,0,51,52,2,0,41,42,53,54,1,0,
+        55,56,542,0,35,1,0,0,0,2,47,1,0,0,0,4,49,1,0,0,0,6,69,1,0,0,0,8,
+        84,1,0,0,0,10,96,1,0,0,0,12,128,1,0,0,0,14,173,1,0,0,0,16,175,1,
+        0,0,0,18,180,1,0,0,0,20,200,1,0,0,0,22,222,1,0,0,0,24,349,1,0,0,
+        0,26,352,1,0,0,0,28,356,1,0,0,0,30,421,1,0,0,0,32,34,3,2,1,0,33,
+        32,1,0,0,0,34,37,1,0,0,0,35,33,1,0,0,0,35,36,1,0,0,0,36,38,1,0,0,
+        0,37,35,1,0,0,0,38,39,5,0,0,1,39,1,1,0,0,0,40,48,3,6,3,0,41,48,3,
+        10,5,0,42,48,3,4,2,0,43,48,3,14,7,0,44,48,3,16,8,0,45,48,3,18,9,
+        0,46,48,3,8,4,0,47,40,1,0,0,0,47,41,1,0,0,0,47,42,1,0,0,0,47,43,
+        1,0,0,0,47,44,1,0,0,0,47,45,1,0,0,0,47,46,1,0,0,0,48,3,1,0,0,0,49,
+        50,5,1,0,0,50,51,5,76,0,0,51,52,5,2,0,0,52,53,5,3,0,0,53,54,3,30,
+        15,0,54,55,5,4,0,0,55,56,5,5,0,0,56,57,5,6,0,0,57,62,3,12,6,0,58,
+        59,5,7,0,0,59,61,3,12,6,0,60,58,1,0,0,0,61,64,1,0,0,0,62,60,1,0,
+        0,0,62,63,1,0,0,0,63,65,1,0,0,0,64,62,1,0,0,0,65,67,5,8,0,0,66,68,
+        5,9,0,0,67,66,1,0,0,0,67,68,1,0,0,0,68,5,1,0,0,0,69,70,5,10,0,0,
+        70,71,5,2,0,0,71,72,5,6,0,0,72,77,5,76,0,0,73,74,5,7,0,0,74,76,5,
+        76,0,0,75,73,1,0,0,0,76,79,1,0,0,0,77,75,1,0,0,0,77,78,1,0,0,0,78,
+        80,1,0,0,0,79,77,1,0,0,0,80,82,5,8,0,0,81,83,5,9,0,0,82,81,1,0,0,
+        0,82,83,1,0,0,0,83,7,1,0,0,0,84,85,5,11,0,0,85,86,5,76,0,0,86,88,
+        5,6,0,0,87,89,3,10,5,0,88,87,1,0,0,0,89,90,1,0,0,0,90,88,1,0,0,0,
+        90,91,1,0,0,0,91,92,1,0,0,0,92,94,5,8,0,0,93,95,5,9,0,0,94,93,1,
+        0,0,0,94,95,1,0,0,0,95,9,1,0,0,0,96,97,3,12,6,0,97,102,5,76,0,0,
+        98,99,5,3,0,0,99,100,3,30,15,0,100,101,5,4,0,0,101,103,1,0,0,0,102,
+        98,1,0,0,0,102,103,1,0,0,0,103,106,1,0,0,0,104,105,5,2,0,0,105,107,
+        3,30,15,0,106,104,1,0,0,0,106,107,1,0,0,0,107,122,1,0,0,0,108,109,
+        5,7,0,0,109,114,5,76,0,0,110,111,5,3,0,0,111,112,3,30,15,0,112,113,
+        5,4,0,0,113,115,1,0,0,0,114,110,1,0,0,0,114,115,1,0,0,0,115,118,
+        1,0,0,0,116,117,5,2,0,0,117,119,3,30,15,0,118,116,1,0,0,0,118,119,
+        1,0,0,0,119,121,1,0,0,0,120,108,1,0,0,0,121,124,1,0,0,0,122,120,
+        1,0,0,0,122,123,1,0,0,0,123,126,1,0,0,0,124,122,1,0,0,0,125,127,
+        5,9,0,0,126,125,1,0,0,0,126,127,1,0,0,0,127,11,1,0,0,0,128,129,7,
+        0,0,0,129,13,1,0,0,0,130,135,5,18,0,0,131,132,5,3,0,0,132,133,3,
+        30,15,0,133,134,5,4,0,0,134,136,1,0,0,0,135,131,1,0,0,0,135,136,
+        1,0,0,0,136,137,1,0,0,0,137,138,5,19,0,0,138,139,5,76,0,0,139,148,
+        5,20,0,0,140,145,3,10,5,0,141,142,5,7,0,0,142,144,3,10,5,0,143,141,
+        1,0,0,0,144,147,1,0,0,0,145,143,1,0,0,0,145,146,1,0,0,0,146,149,
+        1,0,0,0,147,145,1,0,0,0,148,140,1,0,0,0,148,149,1,0,0,0,149,150,
+        1,0,0,0,150,151,5,21,0,0,151,152,5,6,0,0,152,153,3,20,10,0,153,154,
+        5,8,0,0,154,174,1,0,0,0,155,156,5,19,0,0,156,157,5,76,0,0,157,166,
+        5,20,0,0,158,163,3,10,5,0,159,160,5,7,0,0,160,162,3,10,5,0,161,159,
+        1,0,0,0,162,165,1,0,0,0,163,161,1,0,0,0,163,164,1,0,0,0,164,167,
+        1,0,0,0,165,163,1,0,0,0,166,158,1,0,0,0,166,167,1,0,0,0,167,168,
+        1,0,0,0,168,169,5,21,0,0,169,170,5,6,0,0,170,171,3,20,10,0,171,172,
+        5,8,0,0,172,174,1,0,0,0,173,130,1,0,0,0,173,155,1,0,0,0,174,15,1,
+        0,0,0,175,176,5,22,0,0,176,177,5,6,0,0,177,178,3,20,10,0,178,179,
+        5,8,0,0,179,17,1,0,0,0,180,181,5,23,0,0,181,182,5,76,0,0,182,191,
+        5,20,0,0,183,188,5,76,0,0,184,185,5,7,0,0,185,187,5,76,0,0,186,184,
+        1,0,0,0,187,190,1,0,0,0,188,186,1,0,0,0,188,189,1,0,0,0,189,192,
+        1,0,0,0,190,188,1,0,0,0,191,183,1,0,0,0,191,192,1,0,0,0,192,193,
+        1,0,0,0,193,194,5,21,0,0,194,195,5,6,0,0,195,196,3,20,10,0,196,197,
+        5,8,0,0,197,19,1,0,0,0,198,201,3,10,5,0,199,201,3,22,11,0,200,198,
+        1,0,0,0,200,199,1,0,0,0,201,211,1,0,0,0,202,204,5,9,0,0,203,202,
+        1,0,0,0,203,204,1,0,0,0,204,207,1,0,0,0,205,208,3,10,5,0,206,208,
+        3,22,11,0,207,205,1,0,0,0,207,206,1,0,0,0,208,210,1,0,0,0,209,203,
+        1,0,0,0,210,213,1,0,0,0,211,209,1,0,0,0,211,212,1,0,0,0,212,215,
+        1,0,0,0,213,211,1,0,0,0,214,216,5,9,0,0,215,214,1,0,0,0,215,216,
+        1,0,0,0,216,21,1,0,0,0,217,223,3,24,12,0,218,219,3,24,12,0,219,220,
+        5,24,0,0,220,221,3,24,12,0,221,223,1,0,0,0,222,217,1,0,0,0,222,218,
+        1,0,0,0,223,23,1,0,0,0,224,350,5,25,0,0,225,350,5,26,0,0,226,227,
+        5,76,0,0,227,228,5,27,0,0,228,350,3,24,12,0,229,230,5,28,0,0,230,
+        350,5,76,0,0,231,350,3,30,15,0,232,233,5,76,0,0,233,234,5,2,0,0,
+        234,350,3,30,15,0,235,236,5,76,0,0,236,237,5,3,0,0,237,238,3,30,
+        15,0,238,239,5,4,0,0,239,240,5,2,0,0,240,241,3,30,15,0,241,350,1,
+        0,0,0,242,243,5,76,0,0,243,244,5,29,0,0,244,245,5,76,0,0,245,246,
+        5,2,0,0,246,350,3,30,15,0,247,248,5,30,0,0,248,249,3,28,14,0,249,
+        250,5,31,0,0,250,350,1,0,0,0,251,252,5,32,0,0,252,253,3,28,14,0,
+        253,254,5,33,0,0,254,350,1,0,0,0,255,256,5,34,0,0,256,257,5,6,0,
+        0,257,258,3,20,10,0,258,259,5,8,0,0,259,350,1,0,0,0,260,261,5,35,
+        0,0,261,262,5,6,0,0,262,263,3,20,10,0,263,264,5,8,0,0,264,350,1,
+        0,0,0,265,266,5,6,0,0,266,267,3,20,10,0,267,268,5,8,0,0,268,350,
+        1,0,0,0,269,270,5,36,0,0,270,271,5,20,0,0,271,276,5,77,0,0,272,273,
+        5,7,0,0,273,275,3,30,15,0,274,272,1,0,0,0,275,278,1,0,0,0,276,274,
+        1,0,0,0,276,277,1,0,0,0,277,279,1,0,0,0,278,276,1,0,0,0,279,350,
+        5,21,0,0,280,281,5,37,0,0,281,282,5,20,0,0,282,283,3,30,15,0,283,
+        284,5,21,0,0,284,350,1,0,0,0,285,286,5,38,0,0,286,287,5,20,0,0,287,
+        288,3,30,15,0,288,289,5,21,0,0,289,350,1,0,0,0,290,291,5,76,0,0,
+        291,292,5,39,0,0,292,297,3,30,15,0,293,294,5,7,0,0,294,296,3,30,
+        15,0,295,293,1,0,0,0,296,299,1,0,0,0,297,295,1,0,0,0,297,298,1,0,
+        0,0,298,350,1,0,0,0,299,297,1,0,0,0,300,301,5,76,0,0,301,302,5,40,
+        0,0,302,307,5,76,0,0,303,304,5,7,0,0,304,306,5,76,0,0,305,303,1,
+        0,0,0,306,309,1,0,0,0,307,305,1,0,0,0,307,308,1,0,0,0,308,350,1,
+        0,0,0,309,307,1,0,0,0,310,311,5,76,0,0,311,312,5,40,0,0,312,313,
+        5,41,0,0,313,318,5,76,0,0,314,315,5,7,0,0,315,317,5,76,0,0,316,314,
+        1,0,0,0,317,320,1,0,0,0,318,316,1,0,0,0,318,319,1,0,0,0,319,321,
+        1,0,0,0,320,318,1,0,0,0,321,350,5,42,0,0,322,323,5,43,0,0,323,324,
+        5,76,0,0,324,333,5,20,0,0,325,330,3,30,15,0,326,327,5,7,0,0,327,
+        329,3,30,15,0,328,326,1,0,0,0,329,332,1,0,0,0,330,328,1,0,0,0,330,
+        331,1,0,0,0,331,334,1,0,0,0,332,330,1,0,0,0,333,325,1,0,0,0,333,
+        334,1,0,0,0,334,335,1,0,0,0,335,350,5,21,0,0,336,337,5,76,0,0,337,
+        346,5,20,0,0,338,343,3,30,15,0,339,340,5,7,0,0,340,342,3,30,15,0,
+        341,339,1,0,0,0,342,345,1,0,0,0,343,341,1,0,0,0,343,344,1,0,0,0,
+        344,347,1,0,0,0,345,343,1,0,0,0,346,338,1,0,0,0,346,347,1,0,0,0,
+        347,348,1,0,0,0,348,350,5,21,0,0,349,224,1,0,0,0,349,225,1,0,0,0,
+        349,226,1,0,0,0,349,229,1,0,0,0,349,231,1,0,0,0,349,232,1,0,0,0,
+        349,235,1,0,0,0,349,242,1,0,0,0,349,247,1,0,0,0,349,251,1,0,0,0,
+        349,255,1,0,0,0,349,260,1,0,0,0,349,265,1,0,0,0,349,269,1,0,0,0,
+        349,280,1,0,0,0,349,285,1,0,0,0,349,290,1,0,0,0,349,300,1,0,0,0,
+        349,310,1,0,0,0,349,322,1,0,0,0,349,336,1,0,0,0,350,25,1,0,0,0,351,
+        353,3,28,14,0,352,351,1,0,0,0,353,354,1,0,0,0,354,352,1,0,0,0,354,
+        355,1,0,0,0,355,27,1,0,0,0,356,360,5,44,0,0,357,358,3,30,15,0,358,
+        359,5,45,0,0,359,361,1,0,0,0,360,357,1,0,0,0,360,361,1,0,0,0,361,
+        362,1,0,0,0,362,363,3,20,10,0,363,29,1,0,0,0,364,365,6,15,-1,0,365,
+        366,5,20,0,0,366,367,3,30,15,0,367,368,5,21,0,0,368,422,1,0,0,0,
+        369,370,5,39,0,0,370,422,3,30,15,23,371,372,5,62,0,0,372,422,3,30,
+        15,22,373,374,5,50,0,0,374,422,3,30,15,21,375,376,5,49,0,0,376,422,
+        3,30,15,20,377,378,5,63,0,0,378,422,3,30,15,18,379,380,5,64,0,0,
+        380,422,3,30,15,16,381,382,5,76,0,0,382,383,5,3,0,0,383,384,3,30,
+        15,0,384,385,5,4,0,0,385,422,1,0,0,0,386,387,5,76,0,0,387,388,5,
+        29,0,0,388,422,5,76,0,0,389,390,5,65,0,0,390,391,5,20,0,0,391,392,
+        5,76,0,0,392,422,5,21,0,0,393,394,5,66,0,0,394,395,5,20,0,0,395,
+        396,5,76,0,0,396,422,5,21,0,0,397,398,5,67,0,0,398,399,5,20,0,0,
+        399,400,5,76,0,0,400,422,5,21,0,0,401,402,5,68,0,0,402,403,5,20,
+        0,0,403,404,3,30,15,0,404,405,5,21,0,0,405,422,1,0,0,0,406,407,5,
+        69,0,0,407,408,5,20,0,0,408,409,5,76,0,0,409,422,5,21,0,0,410,411,
+        5,70,0,0,411,412,5,20,0,0,412,413,5,76,0,0,413,422,5,21,0,0,414,
+        422,5,71,0,0,415,422,5,72,0,0,416,422,5,76,0,0,417,422,5,75,0,0,
+        418,422,5,77,0,0,419,422,5,73,0,0,420,422,5,74,0,0,421,364,1,0,0,
+        0,421,369,1,0,0,0,421,371,1,0,0,0,421,373,1,0,0,0,421,375,1,0,0,
+        0,421,377,1,0,0,0,421,379,1,0,0,0,421,381,1,0,0,0,421,386,1,0,0,
+        0,421,389,1,0,0,0,421,393,1,0,0,0,421,397,1,0,0,0,421,401,1,0,0,
+        0,421,406,1,0,0,0,421,410,1,0,0,0,421,414,1,0,0,0,421,415,1,0,0,
+        0,421,416,1,0,0,0,421,417,1,0,0,0,421,418,1,0,0,0,421,419,1,0,0,
+        0,421,420,1,0,0,0,422,459,1,0,0,0,423,424,10,33,0,0,424,425,7,1,
+        0,0,425,458,3,30,15,34,426,427,10,32,0,0,427,428,7,2,0,0,428,458,
+        3,30,15,33,429,430,10,31,0,0,430,431,7,3,0,0,431,458,3,30,15,32,
+        432,433,10,30,0,0,433,434,7,4,0,0,434,458,3,30,15,31,435,436,10,
+        29,0,0,436,437,7,5,0,0,437,458,3,30,15,30,438,439,10,28,0,0,439,
+        440,5,57,0,0,440,458,3,30,15,29,441,442,10,27,0,0,442,443,5,58,0,
+        0,443,458,3,30,15,28,444,445,10,26,0,0,445,446,5,59,0,0,446,458,
+        3,30,15,27,447,448,10,25,0,0,448,449,5,60,0,0,449,458,3,30,15,26,
+        450,451,10,24,0,0,451,452,5,61,0,0,452,458,3,30,15,25,453,454,10,
+        19,0,0,454,458,5,63,0,0,455,456,10,17,0,0,456,458,5,64,0,0,457,423,
+        1,0,0,0,457,426,1,0,0,0,457,429,1,0,0,0,457,432,1,0,0,0,457,435,
+        1,0,0,0,457,438,1,0,0,0,457,441,1,0,0,0,457,444,1,0,0,0,457,447,
+        1,0,0,0,457,450,1,0,0,0,457,453,1,0,0,0,457,455,1,0,0,0,458,461,
+        1,0,0,0,459,457,1,0,0,0,459,460,1,0,0,0,460,31,1,0,0,0,461,459,1,
+        0,0,0,42,35,47,62,67,77,82,90,94,102,106,114,118,122,126,135,145,
+        148,163,166,173,188,191,200,203,207,211,215,222,276,297,307,318,
+        330,333,343,346,349,354,360,421,457,459
+    ]
+
+class PromelaParser ( Parser ):
+
+    grammarFileName = "Promela.g4"
+
+    atn = ATNDeserializer().deserialize(serializedATN())
+
+    decisionsToDFA = [ DFA(ds, i) for i, ds in enumerate(atn.decisionToState) ]
+
+    sharedContextCache = PredictionContextCache()
+
+    literalNames = [ "<INVALID>", "'chan'", "'='", "'['", "']'", "'of'", 
+                     "'{'", "','", "'}'", "';'", "'mtype'", "'typedef'", 
+                     "'bit'", "'bool'", "'byte'", "'short'", "'int'", "'pid'", 
+                     "'active'", "'proctype'", "'('", "')'", "'init'", "'inline'", 
+                     "'unless'", "'skip'", "'break'", "':'", "'goto'", "'.'", 
+                     "'if'", "'fi'", "'do'", "'od'", "'atomic'", "'d_step'", 
+                     "'printf'", "'printm'", "'assert'", "'!'", "'?'", "'<'", 
+                     "'>'", "'run'", "'::'", "'->'", "'*'", "'/'", "'%'", 
+                     "'+'", "'-'", "'<<'", "'>>'", "'<='", "'>='", "'=='", 
+                     "'!='", "'&'", "'^'", "'|'", "'&&'", "'||'", "'~'", 
+                     "'++'", "'--'", "'len'", "'empty'", "'full'", "'enabled'", 
+                     "'nempty'", "'nfull'", "'timeout'", "'np_'", "'true'", 
+                     "'false'" ]
+
+    symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "NUMBER", "ID", 
+                      "STRING", "COMMENT", "LINE_COMMENT", "WS" ]
+
+    RULE_spec = 0
+    RULE_unit = 1
+    RULE_chanDecl = 2
+    RULE_mtypeDecl = 3
+    RULE_typedefDecl = 4
+    RULE_varDecl = 5
+    RULE_typename = 6
+    RULE_proctype = 7
+    RULE_init = 8
+    RULE_inlineDecl = 9
+    RULE_sequence = 10
+    RULE_step = 11
+    RULE_stmt = 12
+    RULE_options = 13
+    RULE_option = 14
+    RULE_expr = 15
+
+    ruleNames =  [ "spec", "unit", "chanDecl", "mtypeDecl", "typedefDecl", 
+                   "varDecl", "typename", "proctype", "init", "inlineDecl", 
+                   "sequence", "step", "stmt", "options", "option", "expr" ]
+
+    EOF = Token.EOF
+    T__0=1
+    T__1=2
+    T__2=3
+    T__3=4
+    T__4=5
+    T__5=6
+    T__6=7
+    T__7=8
+    T__8=9
+    T__9=10
+    T__10=11
+    T__11=12
+    T__12=13
+    T__13=14
+    T__14=15
+    T__15=16
+    T__16=17
+    T__17=18
+    T__18=19
+    T__19=20
+    T__20=21
+    T__21=22
+    T__22=23
+    T__23=24
+    T__24=25
+    T__25=26
+    T__26=27
+    T__27=28
+    T__28=29
+    T__29=30
+    T__30=31
+    T__31=32
+    T__32=33
+    T__33=34
+    T__34=35
+    T__35=36
+    T__36=37
+    T__37=38
+    T__38=39
+    T__39=40
+    T__40=41
+    T__41=42
+    T__42=43
+    T__43=44
+    T__44=45
+    T__45=46
+    T__46=47
+    T__47=48
+    T__48=49
+    T__49=50
+    T__50=51
+    T__51=52
+    T__52=53
+    T__53=54
+    T__54=55
+    T__55=56
+    T__56=57
+    T__57=58
+    T__58=59
+    T__59=60
+    T__60=61
+    T__61=62
+    T__62=63
+    T__63=64
+    T__64=65
+    T__65=66
+    T__66=67
+    T__67=68
+    T__68=69
+    T__69=70
+    T__70=71
+    T__71=72
+    T__72=73
+    T__73=74
+    NUMBER=75
+    ID=76
+    STRING=77
+    COMMENT=78
+    LINE_COMMENT=79
+    WS=80
+
+    def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
+        super().__init__(input, output)
+        self.checkVersion("4.13.2")
+        self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
+        self._predicates = None
+
+
+
+
+    class SpecContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def EOF(self):
+            return self.getToken(PromelaParser.EOF, 0)
+
+        def unit(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.UnitContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.UnitContext,i)
+
+
+        def getRuleIndex(self):
+            return PromelaParser.RULE_spec
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSpec" ):
+                listener.enterSpec(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSpec" ):
+                listener.exitSpec(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSpec" ):
+                return visitor.visitSpec(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def spec(self):
+
+        localctx = PromelaParser.SpecContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 0, self.RULE_spec)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 35
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 13630466) != 0) or _la==76:
+                self.state = 32
+                self.unit()
+                self.state = 37
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+            self.state = 38
+            self.match(PromelaParser.EOF)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class UnitContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def mtypeDecl(self):
+            return self.getTypedRuleContext(PromelaParser.MtypeDeclContext,0)
+
+
+        def varDecl(self):
+            return self.getTypedRuleContext(PromelaParser.VarDeclContext,0)
+
+
+        def chanDecl(self):
+            return self.getTypedRuleContext(PromelaParser.ChanDeclContext,0)
+
+
+        def proctype(self):
+            return self.getTypedRuleContext(PromelaParser.ProctypeContext,0)
+
+
+        def init(self):
+            return self.getTypedRuleContext(PromelaParser.InitContext,0)
+
+
+        def inlineDecl(self):
+            return self.getTypedRuleContext(PromelaParser.InlineDeclContext,0)
+
+
+        def typedefDecl(self):
+            return self.getTypedRuleContext(PromelaParser.TypedefDeclContext,0)
+
+
+        def getRuleIndex(self):
+            return PromelaParser.RULE_unit
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUnit" ):
+                listener.enterUnit(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUnit" ):
+                listener.exitUnit(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitUnit" ):
+                return visitor.visitUnit(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def unit(self):
+
+        localctx = PromelaParser.UnitContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 2, self.RULE_unit)
+        try:
+            self.state = 47
+            self._errHandler.sync(self)
+            la_ = self._interp.adaptivePredict(self._input,1,self._ctx)
+            if la_ == 1:
+                self.enterOuterAlt(localctx, 1)
+                self.state = 40
+                self.mtypeDecl()
+                pass
+
+            elif la_ == 2:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 41
+                self.varDecl()
+                pass
+
+            elif la_ == 3:
+                self.enterOuterAlt(localctx, 3)
+                self.state = 42
+                self.chanDecl()
+                pass
+
+            elif la_ == 4:
+                self.enterOuterAlt(localctx, 4)
+                self.state = 43
+                self.proctype()
+                pass
+
+            elif la_ == 5:
+                self.enterOuterAlt(localctx, 5)
+                self.state = 44
+                self.init()
+                pass
+
+            elif la_ == 6:
+                self.enterOuterAlt(localctx, 6)
+                self.state = 45
+                self.inlineDecl()
+                pass
+
+            elif la_ == 7:
+                self.enterOuterAlt(localctx, 7)
+                self.state = 46
+                self.typedefDecl()
+                pass
+
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class ChanDeclContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def ID(self):
+            return self.getToken(PromelaParser.ID, 0)
+
+        def expr(self):
+            return self.getTypedRuleContext(PromelaParser.ExprContext,0)
+
+
+        def typename(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.TypenameContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.TypenameContext,i)
+
+
+        def getRuleIndex(self):
+            return PromelaParser.RULE_chanDecl
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterChanDecl" ):
+                listener.enterChanDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitChanDecl" ):
+                listener.exitChanDecl(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitChanDecl" ):
+                return visitor.visitChanDecl(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def chanDecl(self):
+
+        localctx = PromelaParser.ChanDeclContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 4, self.RULE_chanDecl)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 49
+            self.match(PromelaParser.T__0)
+            self.state = 50
+            self.match(PromelaParser.ID)
+            self.state = 51
+            self.match(PromelaParser.T__1)
+            self.state = 52
+            self.match(PromelaParser.T__2)
+            self.state = 53
+            self.expr(0)
+            self.state = 54
+            self.match(PromelaParser.T__3)
+            self.state = 55
+            self.match(PromelaParser.T__4)
+            self.state = 56
+            self.match(PromelaParser.T__5)
+            self.state = 57
+            self.typename()
+            self.state = 62
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==7:
+                self.state = 58
+                self.match(PromelaParser.T__6)
+                self.state = 59
+                self.typename()
+                self.state = 64
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+            self.state = 65
+            self.match(PromelaParser.T__7)
+            self.state = 67
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la==9:
+                self.state = 66
+                self.match(PromelaParser.T__8)
+
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class MtypeDeclContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def ID(self, i:int=None):
+            if i is None:
+                return self.getTokens(PromelaParser.ID)
+            else:
+                return self.getToken(PromelaParser.ID, i)
+
+        def getRuleIndex(self):
+            return PromelaParser.RULE_mtypeDecl
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMtypeDecl" ):
+                listener.enterMtypeDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMtypeDecl" ):
+                listener.exitMtypeDecl(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitMtypeDecl" ):
+                return visitor.visitMtypeDecl(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def mtypeDecl(self):
+
+        localctx = PromelaParser.MtypeDeclContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 6, self.RULE_mtypeDecl)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 69
+            self.match(PromelaParser.T__9)
+            self.state = 70
+            self.match(PromelaParser.T__1)
+            self.state = 71
+            self.match(PromelaParser.T__5)
+            self.state = 72
+            self.match(PromelaParser.ID)
+            self.state = 77
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==7:
+                self.state = 73
+                self.match(PromelaParser.T__6)
+                self.state = 74
+                self.match(PromelaParser.ID)
+                self.state = 79
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+            self.state = 80
+            self.match(PromelaParser.T__7)
+            self.state = 82
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la==9:
+                self.state = 81
+                self.match(PromelaParser.T__8)
+
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class TypedefDeclContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def ID(self):
+            return self.getToken(PromelaParser.ID, 0)
+
+        def varDecl(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.VarDeclContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.VarDeclContext,i)
+
+
+        def getRuleIndex(self):
+            return PromelaParser.RULE_typedefDecl
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypedefDecl" ):
+                listener.enterTypedefDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypedefDecl" ):
+                listener.exitTypedefDecl(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTypedefDecl" ):
+                return visitor.visitTypedefDecl(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def typedefDecl(self):
+
+        localctx = PromelaParser.TypedefDeclContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 8, self.RULE_typedefDecl)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 84
+            self.match(PromelaParser.T__10)
+            self.state = 85
+            self.match(PromelaParser.ID)
+            self.state = 86
+            self.match(PromelaParser.T__5)
+            self.state = 88 
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while True:
+                self.state = 87
+                self.varDecl()
+                self.state = 90 
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 259074) != 0) or _la==76):
+                    break
+
+            self.state = 92
+            self.match(PromelaParser.T__7)
+            self.state = 94
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la==9:
+                self.state = 93
+                self.match(PromelaParser.T__8)
+
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class VarDeclContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def typename(self):
+            return self.getTypedRuleContext(PromelaParser.TypenameContext,0)
+
+
+        def ID(self, i:int=None):
+            if i is None:
+                return self.getTokens(PromelaParser.ID)
+            else:
+                return self.getToken(PromelaParser.ID, i)
+
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.ExprContext,i)
+
+
+        def getRuleIndex(self):
+            return PromelaParser.RULE_varDecl
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVarDecl" ):
+                listener.enterVarDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVarDecl" ):
+                listener.exitVarDecl(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitVarDecl" ):
+                return visitor.visitVarDecl(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def varDecl(self):
+
+        localctx = PromelaParser.VarDeclContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 10, self.RULE_varDecl)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 96
+            self.typename()
+            self.state = 97
+            self.match(PromelaParser.ID)
+            self.state = 102
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la==3:
+                self.state = 98
+                self.match(PromelaParser.T__2)
+                self.state = 99
+                self.expr(0)
+                self.state = 100
+                self.match(PromelaParser.T__3)
+
+
+            self.state = 106
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la==2:
+                self.state = 104
+                self.match(PromelaParser.T__1)
+                self.state = 105
+                self.expr(0)
+
+
+            self.state = 122
+            self._errHandler.sync(self)
+            _alt = self._interp.adaptivePredict(self._input,12,self._ctx)
+            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+                if _alt==1:
+                    self.state = 108
+                    self.match(PromelaParser.T__6)
+                    self.state = 109
+                    self.match(PromelaParser.ID)
+                    self.state = 114
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
+                    if _la==3:
+                        self.state = 110
+                        self.match(PromelaParser.T__2)
+                        self.state = 111
+                        self.expr(0)
+                        self.state = 112
+                        self.match(PromelaParser.T__3)
+
+
+                    self.state = 118
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
+                    if _la==2:
+                        self.state = 116
+                        self.match(PromelaParser.T__1)
+                        self.state = 117
+                        self.expr(0)
+
+             
+                self.state = 124
+                self._errHandler.sync(self)
+                _alt = self._interp.adaptivePredict(self._input,12,self._ctx)
+
+            self.state = 126
+            self._errHandler.sync(self)
+            la_ = self._interp.adaptivePredict(self._input,13,self._ctx)
+            if la_ == 1:
+                self.state = 125
+                self.match(PromelaParser.T__8)
+
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class TypenameContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def ID(self):
+            return self.getToken(PromelaParser.ID, 0)
+
+        def getRuleIndex(self):
+            return PromelaParser.RULE_typename
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypename" ):
+                listener.enterTypename(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypename" ):
+                listener.exitTypename(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTypename" ):
+                return visitor.visitTypename(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def typename(self):
+
+        localctx = PromelaParser.TypenameContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 12, self.RULE_typename)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 128
+            _la = self._input.LA(1)
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 259074) != 0) or _la==76):
+                self._errHandler.recoverInline(self)
+            else:
+                self._errHandler.reportMatch(self)
+                self.consume()
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class ProctypeContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def ID(self):
+            return self.getToken(PromelaParser.ID, 0)
+
+        def sequence(self):
+            return self.getTypedRuleContext(PromelaParser.SequenceContext,0)
+
+
+        def expr(self):
+            return self.getTypedRuleContext(PromelaParser.ExprContext,0)
+
+
+        def varDecl(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.VarDeclContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.VarDeclContext,i)
+
+
+        def getRuleIndex(self):
+            return PromelaParser.RULE_proctype
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterProctype" ):
+                listener.enterProctype(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitProctype" ):
+                listener.exitProctype(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitProctype" ):
+                return visitor.visitProctype(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def proctype(self):
+
+        localctx = PromelaParser.ProctypeContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 14, self.RULE_proctype)
+        self._la = 0 # Token type
+        try:
+            self.state = 173
+            self._errHandler.sync(self)
+            token = self._input.LA(1)
+            if token in [18]:
+                self.enterOuterAlt(localctx, 1)
+                self.state = 130
+                self.match(PromelaParser.T__17)
+                self.state = 135
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if _la==3:
+                    self.state = 131
+                    self.match(PromelaParser.T__2)
+                    self.state = 132
+                    self.expr(0)
+                    self.state = 133
+                    self.match(PromelaParser.T__3)
+
+
+                self.state = 137
+                self.match(PromelaParser.T__18)
+                self.state = 138
+                self.match(PromelaParser.ID)
+                self.state = 139
+                self.match(PromelaParser.T__19)
+                self.state = 148
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & 259074) != 0) or _la==76:
+                    self.state = 140
+                    self.varDecl()
+                    self.state = 145
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
+                    while _la==7:
+                        self.state = 141
+                        self.match(PromelaParser.T__6)
+                        self.state = 142
+                        self.varDecl()
+                        self.state = 147
+                        self._errHandler.sync(self)
+                        _la = self._input.LA(1)
+
+
+
+                self.state = 150
+                self.match(PromelaParser.T__20)
+                self.state = 151
+                self.match(PromelaParser.T__5)
+                self.state = 152
+                self.sequence()
+                self.state = 153
+                self.match(PromelaParser.T__7)
+                pass
+            elif token in [19]:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 155
+                self.match(PromelaParser.T__18)
+                self.state = 156
+                self.match(PromelaParser.ID)
+                self.state = 157
+                self.match(PromelaParser.T__19)
+                self.state = 166
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & 259074) != 0) or _la==76:
+                    self.state = 158
+                    self.varDecl()
+                    self.state = 163
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
+                    while _la==7:
+                        self.state = 159
+                        self.match(PromelaParser.T__6)
+                        self.state = 160
+                        self.varDecl()
+                        self.state = 165
+                        self._errHandler.sync(self)
+                        _la = self._input.LA(1)
+
+
+
+                self.state = 168
+                self.match(PromelaParser.T__20)
+                self.state = 169
+                self.match(PromelaParser.T__5)
+                self.state = 170
+                self.sequence()
+                self.state = 171
+                self.match(PromelaParser.T__7)
+                pass
+            else:
+                raise NoViableAltException(self)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class InitContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def sequence(self):
+            return self.getTypedRuleContext(PromelaParser.SequenceContext,0)
+
+
+        def getRuleIndex(self):
+            return PromelaParser.RULE_init
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInit" ):
+                listener.enterInit(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInit" ):
+                listener.exitInit(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitInit" ):
+                return visitor.visitInit(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def init(self):
+
+        localctx = PromelaParser.InitContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 16, self.RULE_init)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 175
+            self.match(PromelaParser.T__21)
+            self.state = 176
+            self.match(PromelaParser.T__5)
+            self.state = 177
+            self.sequence()
+            self.state = 178
+            self.match(PromelaParser.T__7)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class InlineDeclContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def ID(self, i:int=None):
+            if i is None:
+                return self.getTokens(PromelaParser.ID)
+            else:
+                return self.getToken(PromelaParser.ID, i)
+
+        def sequence(self):
+            return self.getTypedRuleContext(PromelaParser.SequenceContext,0)
+
+
+        def getRuleIndex(self):
+            return PromelaParser.RULE_inlineDecl
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInlineDecl" ):
+                listener.enterInlineDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInlineDecl" ):
+                listener.exitInlineDecl(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitInlineDecl" ):
+                return visitor.visitInlineDecl(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def inlineDecl(self):
+
+        localctx = PromelaParser.InlineDeclContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 18, self.RULE_inlineDecl)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 180
+            self.match(PromelaParser.T__22)
+            self.state = 181
+            self.match(PromelaParser.ID)
+            self.state = 182
+            self.match(PromelaParser.T__19)
+            self.state = 191
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la==76:
+                self.state = 183
+                self.match(PromelaParser.ID)
+                self.state = 188
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                while _la==7:
+                    self.state = 184
+                    self.match(PromelaParser.T__6)
+                    self.state = 185
+                    self.match(PromelaParser.ID)
+                    self.state = 190
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
+
+
+
+            self.state = 193
+            self.match(PromelaParser.T__20)
+            self.state = 194
+            self.match(PromelaParser.T__5)
+            self.state = 195
+            self.sequence()
+            self.state = 196
+            self.match(PromelaParser.T__7)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class SequenceContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def varDecl(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.VarDeclContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.VarDeclContext,i)
+
+
+        def step(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.StepContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.StepContext,i)
+
+
+        def getRuleIndex(self):
+            return PromelaParser.RULE_sequence
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSequence" ):
+                listener.enterSequence(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSequence" ):
+                listener.exitSequence(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSequence" ):
+                return visitor.visitSequence(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def sequence(self):
+
+        localctx = PromelaParser.SequenceContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 20, self.RULE_sequence)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 200
+            self._errHandler.sync(self)
+            la_ = self._interp.adaptivePredict(self._input,22,self._ctx)
+            if la_ == 1:
+                self.state = 198
+                self.varDecl()
+                pass
+
+            elif la_ == 2:
+                self.state = 199
+                self.step()
+                pass
+
+
+            self.state = 211
+            self._errHandler.sync(self)
+            _alt = self._interp.adaptivePredict(self._input,25,self._ctx)
+            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+                if _alt==1:
+                    self.state = 203
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
+                    if _la==9:
+                        self.state = 202
+                        self.match(PromelaParser.T__8)
+
+
+                    self.state = 207
+                    self._errHandler.sync(self)
+                    la_ = self._interp.adaptivePredict(self._input,24,self._ctx)
+                    if la_ == 1:
+                        self.state = 205
+                        self.varDecl()
+                        pass
+
+                    elif la_ == 2:
+                        self.state = 206
+                        self.step()
+                        pass
+
+             
+                self.state = 213
+                self._errHandler.sync(self)
+                _alt = self._interp.adaptivePredict(self._input,25,self._ctx)
+
+            self.state = 215
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la==9:
+                self.state = 214
+                self.match(PromelaParser.T__8)
+
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class StepContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def stmt(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.StmtContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.StmtContext,i)
+
+
+        def getRuleIndex(self):
+            return PromelaParser.RULE_step
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterStep" ):
+                listener.enterStep(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitStep" ):
+                listener.exitStep(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitStep" ):
+                return visitor.visitStep(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def step(self):
+
+        localctx = PromelaParser.StepContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 22, self.RULE_step)
+        try:
+            self.state = 222
+            self._errHandler.sync(self)
+            la_ = self._interp.adaptivePredict(self._input,27,self._ctx)
+            if la_ == 1:
+                self.enterOuterAlt(localctx, 1)
+                self.state = 217
+                self.stmt()
+                pass
+
+            elif la_ == 2:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 218
+                self.stmt()
+                self.state = 219
+                self.match(PromelaParser.T__23)
+                self.state = 220
+                self.stmt()
+                pass
+
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class StmtContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+
+        def getRuleIndex(self):
+            return PromelaParser.RULE_stmt
+
+     
+        def copyFrom(self, ctx:ParserRuleContext):
+            super().copyFrom(ctx)
+
+
+
+    class ReceiveStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def ID(self, i:int=None):
+            if i is None:
+                return self.getTokens(PromelaParser.ID)
+            else:
+                return self.getToken(PromelaParser.ID, i)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterReceiveStmt" ):
+                listener.enterReceiveStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitReceiveStmt" ):
+                listener.exitReceiveStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitReceiveStmt" ):
+                return visitor.visitReceiveStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class ReceivePollStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def ID(self, i:int=None):
+            if i is None:
+                return self.getTokens(PromelaParser.ID)
+            else:
+                return self.getToken(PromelaParser.ID, i)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterReceivePollStmt" ):
+                listener.enterReceivePollStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitReceivePollStmt" ):
+                listener.exitReceivePollStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitReceivePollStmt" ):
+                return visitor.visitReceivePollStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class SendStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def ID(self):
+            return self.getToken(PromelaParser.ID, 0)
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.ExprContext,i)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSendStmt" ):
+                listener.enterSendStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSendStmt" ):
+                listener.exitSendStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSendStmt" ):
+                return visitor.visitSendStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class AssignStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def ID(self):
+            return self.getToken(PromelaParser.ID, 0)
+        def expr(self):
+            return self.getTypedRuleContext(PromelaParser.ExprContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAssignStmt" ):
+                listener.enterAssignStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAssignStmt" ):
+                listener.exitAssignStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAssignStmt" ):
+                return visitor.visitAssignStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class BlockStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def sequence(self):
+            return self.getTypedRuleContext(PromelaParser.SequenceContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBlockStmt" ):
+                listener.enterBlockStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBlockStmt" ):
+                listener.exitBlockStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBlockStmt" ):
+                return visitor.visitBlockStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class PrintmStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self):
+            return self.getTypedRuleContext(PromelaParser.ExprContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPrintmStmt" ):
+                listener.enterPrintmStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPrintmStmt" ):
+                listener.exitPrintmStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPrintmStmt" ):
+                return visitor.visitPrintmStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class RunStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def ID(self):
+            return self.getToken(PromelaParser.ID, 0)
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.ExprContext,i)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRunStmt" ):
+                listener.enterRunStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRunStmt" ):
+                listener.exitRunStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitRunStmt" ):
+                return visitor.visitRunStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class AtomicStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def sequence(self):
+            return self.getTypedRuleContext(PromelaParser.SequenceContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAtomicStmt" ):
+                listener.enterAtomicStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAtomicStmt" ):
+                listener.exitAtomicStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAtomicStmt" ):
+                return visitor.visitAtomicStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class DstepStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def sequence(self):
+            return self.getTypedRuleContext(PromelaParser.SequenceContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDstepStmt" ):
+                listener.enterDstepStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDstepStmt" ):
+                listener.exitDstepStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitDstepStmt" ):
+                return visitor.visitDstepStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class PrintfStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def STRING(self):
+            return self.getToken(PromelaParser.STRING, 0)
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.ExprContext,i)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPrintfStmt" ):
+                listener.enterPrintfStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPrintfStmt" ):
+                listener.exitPrintfStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPrintfStmt" ):
+                return visitor.visitPrintfStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class FieldAssignStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def ID(self, i:int=None):
+            if i is None:
+                return self.getTokens(PromelaParser.ID)
+            else:
+                return self.getToken(PromelaParser.ID, i)
+        def expr(self):
+            return self.getTypedRuleContext(PromelaParser.ExprContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFieldAssignStmt" ):
+                listener.enterFieldAssignStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFieldAssignStmt" ):
+                listener.exitFieldAssignStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFieldAssignStmt" ):
+                return visitor.visitFieldAssignStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class IfStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def option(self):
+            return self.getTypedRuleContext(PromelaParser.OptionContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIfStmt" ):
+                listener.enterIfStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIfStmt" ):
+                listener.exitIfStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitIfStmt" ):
+                return visitor.visitIfStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class ExprStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self):
+            return self.getTypedRuleContext(PromelaParser.ExprContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExprStmt" ):
+                listener.enterExprStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExprStmt" ):
+                listener.exitExprStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitExprStmt" ):
+                return visitor.visitExprStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class BreakStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBreakStmt" ):
+                listener.enterBreakStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBreakStmt" ):
+                listener.exitBreakStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBreakStmt" ):
+                return visitor.visitBreakStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class GotoStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def ID(self):
+            return self.getToken(PromelaParser.ID, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGotoStmt" ):
+                listener.enterGotoStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGotoStmt" ):
+                listener.exitGotoStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitGotoStmt" ):
+                return visitor.visitGotoStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class InlineCallStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def ID(self):
+            return self.getToken(PromelaParser.ID, 0)
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.ExprContext,i)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInlineCallStmt" ):
+                listener.enterInlineCallStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInlineCallStmt" ):
+                listener.exitInlineCallStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitInlineCallStmt" ):
+                return visitor.visitInlineCallStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class ArrayAssignStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def ID(self):
+            return self.getToken(PromelaParser.ID, 0)
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.ExprContext,i)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArrayAssignStmt" ):
+                listener.enterArrayAssignStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArrayAssignStmt" ):
+                listener.exitArrayAssignStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitArrayAssignStmt" ):
+                return visitor.visitArrayAssignStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class AssertStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self):
+            return self.getTypedRuleContext(PromelaParser.ExprContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAssertStmt" ):
+                listener.enterAssertStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAssertStmt" ):
+                listener.exitAssertStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAssertStmt" ):
+                return visitor.visitAssertStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class SkipStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSkipStmt" ):
+                listener.enterSkipStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSkipStmt" ):
+                listener.exitSkipStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSkipStmt" ):
+                return visitor.visitSkipStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class LabeledStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def ID(self):
+            return self.getToken(PromelaParser.ID, 0)
+        def stmt(self):
+            return self.getTypedRuleContext(PromelaParser.StmtContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLabeledStmt" ):
+                listener.enterLabeledStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLabeledStmt" ):
+                listener.exitLabeledStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLabeledStmt" ):
+                return visitor.visitLabeledStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class DoStmtContext(StmtContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.StmtContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def option(self):
+            return self.getTypedRuleContext(PromelaParser.OptionContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDoStmt" ):
+                listener.enterDoStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDoStmt" ):
+                listener.exitDoStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitDoStmt" ):
+                return visitor.visitDoStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+    def stmt(self):
+
+        localctx = PromelaParser.StmtContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 24, self.RULE_stmt)
+        self._la = 0 # Token type
+        try:
+            self.state = 349
+            self._errHandler.sync(self)
+            la_ = self._interp.adaptivePredict(self._input,36,self._ctx)
+            if la_ == 1:
+                localctx = PromelaParser.SkipStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 1)
+                self.state = 224
+                self.match(PromelaParser.T__24)
+                pass
+
+            elif la_ == 2:
+                localctx = PromelaParser.BreakStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 2)
+                self.state = 225
+                self.match(PromelaParser.T__25)
+                pass
+
+            elif la_ == 3:
+                localctx = PromelaParser.LabeledStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 3)
+                self.state = 226
+                self.match(PromelaParser.ID)
+                self.state = 227
+                self.match(PromelaParser.T__26)
+                self.state = 228
+                self.stmt()
+                pass
+
+            elif la_ == 4:
+                localctx = PromelaParser.GotoStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 4)
+                self.state = 229
+                self.match(PromelaParser.T__27)
+                self.state = 230
+                self.match(PromelaParser.ID)
+                pass
+
+            elif la_ == 5:
+                localctx = PromelaParser.ExprStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 5)
+                self.state = 231
+                self.expr(0)
+                pass
+
+            elif la_ == 6:
+                localctx = PromelaParser.AssignStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 6)
+                self.state = 232
+                self.match(PromelaParser.ID)
+                self.state = 233
+                self.match(PromelaParser.T__1)
+                self.state = 234
+                self.expr(0)
+                pass
+
+            elif la_ == 7:
+                localctx = PromelaParser.ArrayAssignStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 7)
+                self.state = 235
+                self.match(PromelaParser.ID)
+                self.state = 236
+                self.match(PromelaParser.T__2)
+                self.state = 237
+                self.expr(0)
+                self.state = 238
+                self.match(PromelaParser.T__3)
+                self.state = 239
+                self.match(PromelaParser.T__1)
+                self.state = 240
+                self.expr(0)
+                pass
+
+            elif la_ == 8:
+                localctx = PromelaParser.FieldAssignStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 8)
+                self.state = 242
+                self.match(PromelaParser.ID)
+                self.state = 243
+                self.match(PromelaParser.T__28)
+                self.state = 244
+                self.match(PromelaParser.ID)
+                self.state = 245
+                self.match(PromelaParser.T__1)
+                self.state = 246
+                self.expr(0)
+                pass
+
+            elif la_ == 9:
+                localctx = PromelaParser.IfStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 9)
+                self.state = 247
+                self.match(PromelaParser.T__29)
+                self.state = 248
+                self.option()
+                self.state = 249
+                self.match(PromelaParser.T__30)
+                pass
+
+            elif la_ == 10:
+                localctx = PromelaParser.DoStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 10)
+                self.state = 251
+                self.match(PromelaParser.T__31)
+                self.state = 252
+                self.option()
+                self.state = 253
+                self.match(PromelaParser.T__32)
+                pass
+
+            elif la_ == 11:
+                localctx = PromelaParser.AtomicStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 11)
+                self.state = 255
+                self.match(PromelaParser.T__33)
+                self.state = 256
+                self.match(PromelaParser.T__5)
+                self.state = 257
+                self.sequence()
+                self.state = 258
+                self.match(PromelaParser.T__7)
+                pass
+
+            elif la_ == 12:
+                localctx = PromelaParser.DstepStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 12)
+                self.state = 260
+                self.match(PromelaParser.T__34)
+                self.state = 261
+                self.match(PromelaParser.T__5)
+                self.state = 262
+                self.sequence()
+                self.state = 263
+                self.match(PromelaParser.T__7)
+                pass
+
+            elif la_ == 13:
+                localctx = PromelaParser.BlockStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 13)
+                self.state = 265
+                self.match(PromelaParser.T__5)
+                self.state = 266
+                self.sequence()
+                self.state = 267
+                self.match(PromelaParser.T__7)
+                pass
+
+            elif la_ == 14:
+                localctx = PromelaParser.PrintfStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 14)
+                self.state = 269
+                self.match(PromelaParser.T__35)
+                self.state = 270
+                self.match(PromelaParser.T__19)
+                self.state = 271
+                self.match(PromelaParser.STRING)
+                self.state = 276
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                while _la==7:
+                    self.state = 272
+                    self.match(PromelaParser.T__6)
+                    self.state = 273
+                    self.expr(0)
+                    self.state = 278
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
+
+                self.state = 279
+                self.match(PromelaParser.T__20)
+                pass
+
+            elif la_ == 15:
+                localctx = PromelaParser.PrintmStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 15)
+                self.state = 280
+                self.match(PromelaParser.T__36)
+                self.state = 281
+                self.match(PromelaParser.T__19)
+                self.state = 282
+                self.expr(0)
+                self.state = 283
+                self.match(PromelaParser.T__20)
+                pass
+
+            elif la_ == 16:
+                localctx = PromelaParser.AssertStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 16)
+                self.state = 285
+                self.match(PromelaParser.T__37)
+                self.state = 286
+                self.match(PromelaParser.T__19)
+                self.state = 287
+                self.expr(0)
+                self.state = 288
+                self.match(PromelaParser.T__20)
+                pass
+
+            elif la_ == 17:
+                localctx = PromelaParser.SendStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 17)
+                self.state = 290
+                self.match(PromelaParser.ID)
+                self.state = 291
+                self.match(PromelaParser.T__38)
+                self.state = 292
+                self.expr(0)
+                self.state = 297
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                while _la==7:
+                    self.state = 293
+                    self.match(PromelaParser.T__6)
+                    self.state = 294
+                    self.expr(0)
+                    self.state = 299
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
+
+                pass
+
+            elif la_ == 18:
+                localctx = PromelaParser.ReceiveStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 18)
+                self.state = 300
+                self.match(PromelaParser.ID)
+                self.state = 301
+                self.match(PromelaParser.T__39)
+                self.state = 302
+                self.match(PromelaParser.ID)
+                self.state = 307
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                while _la==7:
+                    self.state = 303
+                    self.match(PromelaParser.T__6)
+                    self.state = 304
+                    self.match(PromelaParser.ID)
+                    self.state = 309
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
+
+                pass
+
+            elif la_ == 19:
+                localctx = PromelaParser.ReceivePollStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 19)
+                self.state = 310
+                self.match(PromelaParser.ID)
+                self.state = 311
+                self.match(PromelaParser.T__39)
+                self.state = 312
+                self.match(PromelaParser.T__40)
+                self.state = 313
+                self.match(PromelaParser.ID)
+                self.state = 318
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                while _la==7:
+                    self.state = 314
+                    self.match(PromelaParser.T__6)
+                    self.state = 315
+                    self.match(PromelaParser.ID)
+                    self.state = 320
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
+
+                self.state = 321
+                self.match(PromelaParser.T__41)
+                pass
+
+            elif la_ == 20:
+                localctx = PromelaParser.RunStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 20)
+                self.state = 322
+                self.match(PromelaParser.T__42)
+                self.state = 323
+                self.match(PromelaParser.ID)
+                self.state = 324
+                self.match(PromelaParser.T__19)
+                self.state = 333
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if ((((_la - 20)) & ~0x3f) == 0 and ((1 << (_la - 20)) & 288225979716337665) != 0):
+                    self.state = 325
+                    self.expr(0)
+                    self.state = 330
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
+                    while _la==7:
+                        self.state = 326
+                        self.match(PromelaParser.T__6)
+                        self.state = 327
+                        self.expr(0)
+                        self.state = 332
+                        self._errHandler.sync(self)
+                        _la = self._input.LA(1)
+
+
+
+                self.state = 335
+                self.match(PromelaParser.T__20)
+                pass
+
+            elif la_ == 21:
+                localctx = PromelaParser.InlineCallStmtContext(self, localctx)
+                self.enterOuterAlt(localctx, 21)
+                self.state = 336
+                self.match(PromelaParser.ID)
+                self.state = 337
+                self.match(PromelaParser.T__19)
+                self.state = 346
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if ((((_la - 20)) & ~0x3f) == 0 and ((1 << (_la - 20)) & 288225979716337665) != 0):
+                    self.state = 338
+                    self.expr(0)
+                    self.state = 343
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
+                    while _la==7:
+                        self.state = 339
+                        self.match(PromelaParser.T__6)
+                        self.state = 340
+                        self.expr(0)
+                        self.state = 345
+                        self._errHandler.sync(self)
+                        _la = self._input.LA(1)
+
+
+
+                self.state = 348
+                self.match(PromelaParser.T__20)
+                pass
+
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class OptionsContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def option(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.OptionContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.OptionContext,i)
+
+
+        def getRuleIndex(self):
+            return PromelaParser.RULE_options
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOptions" ):
+                listener.enterOptions(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOptions" ):
+                listener.exitOptions(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitOptions" ):
+                return visitor.visitOptions(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def options(self):
+
+        localctx = PromelaParser.OptionsContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 26, self.RULE_options)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 352 
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while True:
+                self.state = 351
+                self.option()
+                self.state = 354 
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if not (_la==44):
+                    break
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class OptionContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def sequence(self):
+            return self.getTypedRuleContext(PromelaParser.SequenceContext,0)
+
+
+        def expr(self):
+            return self.getTypedRuleContext(PromelaParser.ExprContext,0)
+
+
+        def getRuleIndex(self):
+            return PromelaParser.RULE_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOption" ):
+                listener.enterOption(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOption" ):
+                listener.exitOption(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitOption" ):
+                return visitor.visitOption(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def option(self):
+
+        localctx = PromelaParser.OptionContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 28, self.RULE_option)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 356
+            self.match(PromelaParser.T__43)
+            self.state = 360
+            self._errHandler.sync(self)
+            la_ = self._interp.adaptivePredict(self._input,38,self._ctx)
+            if la_ == 1:
+                self.state = 357
+                self.expr(0)
+                self.state = 358
+                self.match(PromelaParser.T__44)
+
+
+            self.state = 362
+            self.sequence()
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class ExprContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+
+        def getRuleIndex(self):
+            return PromelaParser.RULE_expr
+
+     
+        def copyFrom(self, ctx:ParserRuleContext):
+            super().copyFrom(ctx)
+
+
+    class StringExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def STRING(self):
+            return self.getToken(PromelaParser.STRING, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterStringExpr" ):
+                listener.enterStringExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitStringExpr" ):
+                listener.exitStringExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitStringExpr" ):
+                return visitor.visitStringExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class TrueExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTrueExpr" ):
+                listener.enterTrueExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTrueExpr" ):
+                listener.exitTrueExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTrueExpr" ):
+                return visitor.visitTrueExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class BitwiseOrExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.ExprContext,i)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBitwiseOrExpr" ):
+                listener.enterBitwiseOrExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBitwiseOrExpr" ):
+                listener.exitBitwiseOrExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBitwiseOrExpr" ):
+                return visitor.visitBitwiseOrExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class EnabledExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self):
+            return self.getTypedRuleContext(PromelaParser.ExprContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEnabledExpr" ):
+                listener.enterEnabledExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEnabledExpr" ):
+                listener.exitEnabledExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitEnabledExpr" ):
+                return visitor.visitEnabledExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class EmptyExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def ID(self):
+            return self.getToken(PromelaParser.ID, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEmptyExpr" ):
+                listener.enterEmptyExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEmptyExpr" ):
+                listener.exitEmptyExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitEmptyExpr" ):
+                return visitor.visitEmptyExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class RelationalExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.ExprContext,i)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRelationalExpr" ):
+                listener.enterRelationalExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRelationalExpr" ):
+                listener.exitRelationalExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitRelationalExpr" ):
+                return visitor.visitRelationalExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class LogicalAndExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.ExprContext,i)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLogicalAndExpr" ):
+                listener.enterLogicalAndExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLogicalAndExpr" ):
+                listener.exitLogicalAndExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLogicalAndExpr" ):
+                return visitor.visitLogicalAndExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class PostIncrementExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self):
+            return self.getTypedRuleContext(PromelaParser.ExprContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPostIncrementExpr" ):
+                listener.enterPostIncrementExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPostIncrementExpr" ):
+                listener.exitPostIncrementExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPostIncrementExpr" ):
+                return visitor.visitPostIncrementExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class FalseExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFalseExpr" ):
+                listener.enterFalseExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFalseExpr" ):
+                listener.exitFalseExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFalseExpr" ):
+                return visitor.visitFalseExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class PreIncrementExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self):
+            return self.getTypedRuleContext(PromelaParser.ExprContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPreIncrementExpr" ):
+                listener.enterPreIncrementExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPreIncrementExpr" ):
+                listener.exitPreIncrementExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPreIncrementExpr" ):
+                return visitor.visitPreIncrementExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class EqualityExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.ExprContext,i)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEqualityExpr" ):
+                listener.enterEqualityExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEqualityExpr" ):
+                listener.exitEqualityExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitEqualityExpr" ):
+                return visitor.visitEqualityExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class NonProgressExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNonProgressExpr" ):
+                listener.enterNonProgressExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNonProgressExpr" ):
+                listener.exitNonProgressExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitNonProgressExpr" ):
+                return visitor.visitNonProgressExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class PostDecrementExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self):
+            return self.getTypedRuleContext(PromelaParser.ExprContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPostDecrementExpr" ):
+                listener.enterPostDecrementExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPostDecrementExpr" ):
+                listener.exitPostDecrementExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPostDecrementExpr" ):
+                return visitor.visitPostDecrementExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class NumberExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def NUMBER(self):
+            return self.getToken(PromelaParser.NUMBER, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNumberExpr" ):
+                listener.enterNumberExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNumberExpr" ):
+                listener.exitNumberExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitNumberExpr" ):
+                return visitor.visitNumberExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class BitwiseNotExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self):
+            return self.getTypedRuleContext(PromelaParser.ExprContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBitwiseNotExpr" ):
+                listener.enterBitwiseNotExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBitwiseNotExpr" ):
+                listener.exitBitwiseNotExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBitwiseNotExpr" ):
+                return visitor.visitBitwiseNotExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class FieldAccessExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def ID(self, i:int=None):
+            if i is None:
+                return self.getTokens(PromelaParser.ID)
+            else:
+                return self.getToken(PromelaParser.ID, i)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFieldAccessExpr" ):
+                listener.enterFieldAccessExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFieldAccessExpr" ):
+                listener.exitFieldAccessExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFieldAccessExpr" ):
+                return visitor.visitFieldAccessExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class NfullExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def ID(self):
+            return self.getToken(PromelaParser.ID, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNfullExpr" ):
+                listener.enterNfullExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNfullExpr" ):
+                listener.exitNfullExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitNfullExpr" ):
+                return visitor.visitNfullExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class ShiftExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.ExprContext,i)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterShiftExpr" ):
+                listener.enterShiftExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitShiftExpr" ):
+                listener.exitShiftExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitShiftExpr" ):
+                return visitor.visitShiftExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class BitwiseAndExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.ExprContext,i)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBitwiseAndExpr" ):
+                listener.enterBitwiseAndExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBitwiseAndExpr" ):
+                listener.exitBitwiseAndExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBitwiseAndExpr" ):
+                return visitor.visitBitwiseAndExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class NemptyExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def ID(self):
+            return self.getToken(PromelaParser.ID, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNemptyExpr" ):
+                listener.enterNemptyExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNemptyExpr" ):
+                listener.exitNemptyExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitNemptyExpr" ):
+                return visitor.visitNemptyExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class IdExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def ID(self):
+            return self.getToken(PromelaParser.ID, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIdExpr" ):
+                listener.enterIdExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIdExpr" ):
+                listener.exitIdExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitIdExpr" ):
+                return visitor.visitIdExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class ArrayAccessExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def ID(self):
+            return self.getToken(PromelaParser.ID, 0)
+        def expr(self):
+            return self.getTypedRuleContext(PromelaParser.ExprContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArrayAccessExpr" ):
+                listener.enterArrayAccessExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArrayAccessExpr" ):
+                listener.exitArrayAccessExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitArrayAccessExpr" ):
+                return visitor.visitArrayAccessExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class PreDecrementExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self):
+            return self.getTypedRuleContext(PromelaParser.ExprContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPreDecrementExpr" ):
+                listener.enterPreDecrementExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPreDecrementExpr" ):
+                listener.exitPreDecrementExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPreDecrementExpr" ):
+                return visitor.visitPreDecrementExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class LenExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def ID(self):
+            return self.getToken(PromelaParser.ID, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLenExpr" ):
+                listener.enterLenExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLenExpr" ):
+                listener.exitLenExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLenExpr" ):
+                return visitor.visitLenExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class LogicalNotExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self):
+            return self.getTypedRuleContext(PromelaParser.ExprContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLogicalNotExpr" ):
+                listener.enterLogicalNotExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLogicalNotExpr" ):
+                listener.exitLogicalNotExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLogicalNotExpr" ):
+                return visitor.visitLogicalNotExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class FullExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def ID(self):
+            return self.getToken(PromelaParser.ID, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFullExpr" ):
+                listener.enterFullExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFullExpr" ):
+                listener.exitFullExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFullExpr" ):
+                return visitor.visitFullExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class LogicalOrExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.ExprContext,i)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLogicalOrExpr" ):
+                listener.enterLogicalOrExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLogicalOrExpr" ):
+                listener.exitLogicalOrExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLogicalOrExpr" ):
+                return visitor.visitLogicalOrExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class TimeoutExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTimeoutExpr" ):
+                listener.enterTimeoutExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTimeoutExpr" ):
+                listener.exitTimeoutExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTimeoutExpr" ):
+                return visitor.visitTimeoutExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class MulDivModExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.ExprContext,i)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMulDivModExpr" ):
+                listener.enterMulDivModExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMulDivModExpr" ):
+                listener.exitMulDivModExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitMulDivModExpr" ):
+                return visitor.visitMulDivModExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class UnaryPlusExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self):
+            return self.getTypedRuleContext(PromelaParser.ExprContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUnaryPlusExpr" ):
+                listener.enterUnaryPlusExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUnaryPlusExpr" ):
+                listener.exitUnaryPlusExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitUnaryPlusExpr" ):
+                return visitor.visitUnaryPlusExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class ParenExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self):
+            return self.getTypedRuleContext(PromelaParser.ExprContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParenExpr" ):
+                listener.enterParenExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParenExpr" ):
+                listener.exitParenExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitParenExpr" ):
+                return visitor.visitParenExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class BitwiseXorExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.ExprContext,i)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBitwiseXorExpr" ):
+                listener.enterBitwiseXorExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBitwiseXorExpr" ):
+                listener.exitBitwiseXorExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBitwiseXorExpr" ):
+                return visitor.visitBitwiseXorExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class AddSubExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(PromelaParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(PromelaParser.ExprContext,i)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAddSubExpr" ):
+                listener.enterAddSubExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAddSubExpr" ):
+                listener.exitAddSubExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAddSubExpr" ):
+                return visitor.visitAddSubExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class UnaryMinusExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PromelaParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self):
+            return self.getTypedRuleContext(PromelaParser.ExprContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUnaryMinusExpr" ):
+                listener.enterUnaryMinusExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUnaryMinusExpr" ):
+                listener.exitUnaryMinusExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitUnaryMinusExpr" ):
+                return visitor.visitUnaryMinusExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+    def expr(self, _p:int=0):
+        _parentctx = self._ctx
+        _parentState = self.state
+        localctx = PromelaParser.ExprContext(self, self._ctx, _parentState)
+        _prevctx = localctx
+        _startState = 30
+        self.enterRecursionRule(localctx, 30, self.RULE_expr, _p)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 421
+            self._errHandler.sync(self)
+            la_ = self._interp.adaptivePredict(self._input,39,self._ctx)
+            if la_ == 1:
+                localctx = PromelaParser.ParenExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+
+                self.state = 365
+                self.match(PromelaParser.T__19)
+                self.state = 366
+                self.expr(0)
+                self.state = 367
+                self.match(PromelaParser.T__20)
+                pass
+
+            elif la_ == 2:
+                localctx = PromelaParser.LogicalNotExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 369
+                self.match(PromelaParser.T__38)
+                self.state = 370
+                self.expr(23)
+                pass
+
+            elif la_ == 3:
+                localctx = PromelaParser.BitwiseNotExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 371
+                self.match(PromelaParser.T__61)
+                self.state = 372
+                self.expr(22)
+                pass
+
+            elif la_ == 4:
+                localctx = PromelaParser.UnaryMinusExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 373
+                self.match(PromelaParser.T__49)
+                self.state = 374
+                self.expr(21)
+                pass
+
+            elif la_ == 5:
+                localctx = PromelaParser.UnaryPlusExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 375
+                self.match(PromelaParser.T__48)
+                self.state = 376
+                self.expr(20)
+                pass
+
+            elif la_ == 6:
+                localctx = PromelaParser.PreIncrementExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 377
+                self.match(PromelaParser.T__62)
+                self.state = 378
+                self.expr(18)
+                pass
+
+            elif la_ == 7:
+                localctx = PromelaParser.PreDecrementExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 379
+                self.match(PromelaParser.T__63)
+                self.state = 380
+                self.expr(16)
+                pass
+
+            elif la_ == 8:
+                localctx = PromelaParser.ArrayAccessExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 381
+                self.match(PromelaParser.ID)
+                self.state = 382
+                self.match(PromelaParser.T__2)
+                self.state = 383
+                self.expr(0)
+                self.state = 384
+                self.match(PromelaParser.T__3)
+                pass
+
+            elif la_ == 9:
+                localctx = PromelaParser.FieldAccessExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 386
+                self.match(PromelaParser.ID)
+                self.state = 387
+                self.match(PromelaParser.T__28)
+                self.state = 388
+                self.match(PromelaParser.ID)
+                pass
+
+            elif la_ == 10:
+                localctx = PromelaParser.LenExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 389
+                self.match(PromelaParser.T__64)
+                self.state = 390
+                self.match(PromelaParser.T__19)
+                self.state = 391
+                self.match(PromelaParser.ID)
+                self.state = 392
+                self.match(PromelaParser.T__20)
+                pass
+
+            elif la_ == 11:
+                localctx = PromelaParser.EmptyExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 393
+                self.match(PromelaParser.T__65)
+                self.state = 394
+                self.match(PromelaParser.T__19)
+                self.state = 395
+                self.match(PromelaParser.ID)
+                self.state = 396
+                self.match(PromelaParser.T__20)
+                pass
+
+            elif la_ == 12:
+                localctx = PromelaParser.FullExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 397
+                self.match(PromelaParser.T__66)
+                self.state = 398
+                self.match(PromelaParser.T__19)
+                self.state = 399
+                self.match(PromelaParser.ID)
+                self.state = 400
+                self.match(PromelaParser.T__20)
+                pass
+
+            elif la_ == 13:
+                localctx = PromelaParser.EnabledExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 401
+                self.match(PromelaParser.T__67)
+                self.state = 402
+                self.match(PromelaParser.T__19)
+                self.state = 403
+                self.expr(0)
+                self.state = 404
+                self.match(PromelaParser.T__20)
+                pass
+
+            elif la_ == 14:
+                localctx = PromelaParser.NemptyExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 406
+                self.match(PromelaParser.T__68)
+                self.state = 407
+                self.match(PromelaParser.T__19)
+                self.state = 408
+                self.match(PromelaParser.ID)
+                self.state = 409
+                self.match(PromelaParser.T__20)
+                pass
+
+            elif la_ == 15:
+                localctx = PromelaParser.NfullExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 410
+                self.match(PromelaParser.T__69)
+                self.state = 411
+                self.match(PromelaParser.T__19)
+                self.state = 412
+                self.match(PromelaParser.ID)
+                self.state = 413
+                self.match(PromelaParser.T__20)
+                pass
+
+            elif la_ == 16:
+                localctx = PromelaParser.TimeoutExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 414
+                self.match(PromelaParser.T__70)
+                pass
+
+            elif la_ == 17:
+                localctx = PromelaParser.NonProgressExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 415
+                self.match(PromelaParser.T__71)
+                pass
+
+            elif la_ == 18:
+                localctx = PromelaParser.IdExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 416
+                self.match(PromelaParser.ID)
+                pass
+
+            elif la_ == 19:
+                localctx = PromelaParser.NumberExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 417
+                self.match(PromelaParser.NUMBER)
+                pass
+
+            elif la_ == 20:
+                localctx = PromelaParser.StringExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 418
+                self.match(PromelaParser.STRING)
+                pass
+
+            elif la_ == 21:
+                localctx = PromelaParser.TrueExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 419
+                self.match(PromelaParser.T__72)
+                pass
+
+            elif la_ == 22:
+                localctx = PromelaParser.FalseExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 420
+                self.match(PromelaParser.T__73)
+                pass
+
+
+            self._ctx.stop = self._input.LT(-1)
+            self.state = 459
+            self._errHandler.sync(self)
+            _alt = self._interp.adaptivePredict(self._input,41,self._ctx)
+            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+                if _alt==1:
+                    if self._parseListeners is not None:
+                        self.triggerExitRuleEvent()
+                    _prevctx = localctx
+                    self.state = 457
+                    self._errHandler.sync(self)
+                    la_ = self._interp.adaptivePredict(self._input,40,self._ctx)
+                    if la_ == 1:
+                        localctx = PromelaParser.MulDivModExprContext(self, PromelaParser.ExprContext(self, _parentctx, _parentState))
+                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        self.state = 423
+                        if not self.precpred(self._ctx, 33):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 33)")
+                        self.state = 424
+                        _la = self._input.LA(1)
+                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 492581209243648) != 0)):
+                            self._errHandler.recoverInline(self)
+                        else:
+                            self._errHandler.reportMatch(self)
+                            self.consume()
+                        self.state = 425
+                        self.expr(34)
+                        pass
+
+                    elif la_ == 2:
+                        localctx = PromelaParser.AddSubExprContext(self, PromelaParser.ExprContext(self, _parentctx, _parentState))
+                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        self.state = 426
+                        if not self.precpred(self._ctx, 32):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 32)")
+                        self.state = 427
+                        _la = self._input.LA(1)
+                        if not(_la==49 or _la==50):
+                            self._errHandler.recoverInline(self)
+                        else:
+                            self._errHandler.reportMatch(self)
+                            self.consume()
+                        self.state = 428
+                        self.expr(33)
+                        pass
+
+                    elif la_ == 3:
+                        localctx = PromelaParser.ShiftExprContext(self, PromelaParser.ExprContext(self, _parentctx, _parentState))
+                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        self.state = 429
+                        if not self.precpred(self._ctx, 31):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 31)")
+                        self.state = 430
+                        _la = self._input.LA(1)
+                        if not(_la==51 or _la==52):
+                            self._errHandler.recoverInline(self)
+                        else:
+                            self._errHandler.reportMatch(self)
+                            self.consume()
+                        self.state = 431
+                        self.expr(32)
+                        pass
+
+                    elif la_ == 4:
+                        localctx = PromelaParser.RelationalExprContext(self, PromelaParser.ExprContext(self, _parentctx, _parentState))
+                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        self.state = 432
+                        if not self.precpred(self._ctx, 30):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 30)")
+                        self.state = 433
+                        _la = self._input.LA(1)
+                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 27028194833989632) != 0)):
+                            self._errHandler.recoverInline(self)
+                        else:
+                            self._errHandler.reportMatch(self)
+                            self.consume()
+                        self.state = 434
+                        self.expr(31)
+                        pass
+
+                    elif la_ == 5:
+                        localctx = PromelaParser.EqualityExprContext(self, PromelaParser.ExprContext(self, _parentctx, _parentState))
+                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        self.state = 435
+                        if not self.precpred(self._ctx, 29):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 29)")
+                        self.state = 436
+                        _la = self._input.LA(1)
+                        if not(_la==55 or _la==56):
+                            self._errHandler.recoverInline(self)
+                        else:
+                            self._errHandler.reportMatch(self)
+                            self.consume()
+                        self.state = 437
+                        self.expr(30)
+                        pass
+
+                    elif la_ == 6:
+                        localctx = PromelaParser.BitwiseAndExprContext(self, PromelaParser.ExprContext(self, _parentctx, _parentState))
+                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        self.state = 438
+                        if not self.precpred(self._ctx, 28):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 28)")
+                        self.state = 439
+                        self.match(PromelaParser.T__56)
+                        self.state = 440
+                        self.expr(29)
+                        pass
+
+                    elif la_ == 7:
+                        localctx = PromelaParser.BitwiseXorExprContext(self, PromelaParser.ExprContext(self, _parentctx, _parentState))
+                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        self.state = 441
+                        if not self.precpred(self._ctx, 27):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 27)")
+                        self.state = 442
+                        self.match(PromelaParser.T__57)
+                        self.state = 443
+                        self.expr(28)
+                        pass
+
+                    elif la_ == 8:
+                        localctx = PromelaParser.BitwiseOrExprContext(self, PromelaParser.ExprContext(self, _parentctx, _parentState))
+                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        self.state = 444
+                        if not self.precpred(self._ctx, 26):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 26)")
+                        self.state = 445
+                        self.match(PromelaParser.T__58)
+                        self.state = 446
+                        self.expr(27)
+                        pass
+
+                    elif la_ == 9:
+                        localctx = PromelaParser.LogicalAndExprContext(self, PromelaParser.ExprContext(self, _parentctx, _parentState))
+                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        self.state = 447
+                        if not self.precpred(self._ctx, 25):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 25)")
+                        self.state = 448
+                        self.match(PromelaParser.T__59)
+                        self.state = 449
+                        self.expr(26)
+                        pass
+
+                    elif la_ == 10:
+                        localctx = PromelaParser.LogicalOrExprContext(self, PromelaParser.ExprContext(self, _parentctx, _parentState))
+                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        self.state = 450
+                        if not self.precpred(self._ctx, 24):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 24)")
+                        self.state = 451
+                        self.match(PromelaParser.T__60)
+                        self.state = 452
+                        self.expr(25)
+                        pass
+
+                    elif la_ == 11:
+                        localctx = PromelaParser.PostIncrementExprContext(self, PromelaParser.ExprContext(self, _parentctx, _parentState))
+                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        self.state = 453
+                        if not self.precpred(self._ctx, 19):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 19)")
+                        self.state = 454
+                        self.match(PromelaParser.T__62)
+                        pass
+
+                    elif la_ == 12:
+                        localctx = PromelaParser.PostDecrementExprContext(self, PromelaParser.ExprContext(self, _parentctx, _parentState))
+                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        self.state = 455
+                        if not self.precpred(self._ctx, 17):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 17)")
+                        self.state = 456
+                        self.match(PromelaParser.T__63)
+                        pass
+
+             
+                self.state = 461
+                self._errHandler.sync(self)
+                _alt = self._interp.adaptivePredict(self._input,41,self._ctx)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.unrollRecursionContexts(_parentctx)
+        return localctx
+
+
+
+    def sempred(self, localctx:RuleContext, ruleIndex:int, predIndex:int):
+        if self._predicates == None:
+            self._predicates = dict()
+        self._predicates[15] = self.expr_sempred
+        pred = self._predicates.get(ruleIndex, None)
+        if pred is None:
+            raise Exception("No predicate with index:" + str(ruleIndex))
+        else:
+            return pred(localctx, predIndex)
+
+    def expr_sempred(self, localctx:ExprContext, predIndex:int):
+            if predIndex == 0:
+                return self.precpred(self._ctx, 33)
+         
+
+            if predIndex == 1:
+                return self.precpred(self._ctx, 32)
+         
+
+            if predIndex == 2:
+                return self.precpred(self._ctx, 31)
+         
+
+            if predIndex == 3:
+                return self.precpred(self._ctx, 30)
+         
+
+            if predIndex == 4:
+                return self.precpred(self._ctx, 29)
+         
+
+            if predIndex == 5:
+                return self.precpred(self._ctx, 28)
+         
+
+            if predIndex == 6:
+                return self.precpred(self._ctx, 27)
+         
+
+            if predIndex == 7:
+                return self.precpred(self._ctx, 26)
+         
+
+            if predIndex == 8:
+                return self.precpred(self._ctx, 25)
+         
+
+            if predIndex == 9:
+                return self.precpred(self._ctx, 24)
+         
+
+            if predIndex == 10:
+                return self.precpred(self._ctx, 19)
+         
+
+            if predIndex == 11:
+                return self.precpred(self._ctx, 17)
+         
+
+
+
+
