@@ -49,6 +49,11 @@ class PromelaVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by PromelaParser#paramGroup.
+    def visitParamGroup(self, ctx:PromelaParser.ParamGroupContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by PromelaParser#init.
     def visitInit(self, ctx:PromelaParser.InitContext):
         return self.visitChildren(ctx)
@@ -86,11 +91,6 @@ class PromelaVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PromelaParser#gotoStmt.
     def visitGotoStmt(self, ctx:PromelaParser.GotoStmtContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by PromelaParser#exprStmt.
-    def visitExprStmt(self, ctx:PromelaParser.ExprStmtContext):
         return self.visitChildren(ctx)
 
 
@@ -176,6 +176,11 @@ class PromelaVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PromelaParser#inlineCallStmt.
     def visitInlineCallStmt(self, ctx:PromelaParser.InlineCallStmtContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PromelaParser#exprStmt.
+    def visitExprStmt(self, ctx:PromelaParser.ExprStmtContext):
         return self.visitChildren(ctx)
 
 
