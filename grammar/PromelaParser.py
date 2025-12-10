@@ -112,8 +112,8 @@ def serializedATN():
         234,350,3,30,15,0,235,236,5,76,0,0,236,237,5,3,0,0,237,238,3,30,
         15,0,238,239,5,4,0,0,239,240,5,2,0,0,240,241,3,30,15,0,241,350,1,
         0,0,0,242,243,5,76,0,0,243,244,5,29,0,0,244,245,5,76,0,0,245,246,
-        5,2,0,0,246,350,3,30,15,0,247,248,5,30,0,0,248,249,3,28,14,0,249,
-        250,5,31,0,0,250,350,1,0,0,0,251,252,5,32,0,0,252,253,3,28,14,0,
+        5,2,0,0,246,350,3,30,15,0,247,248,5,30,0,0,248,249,3,26,13,0,249,
+        250,5,31,0,0,250,350,1,0,0,0,251,252,5,32,0,0,252,253,3,26,13,0,
         253,254,5,33,0,0,254,350,1,0,0,0,255,256,5,34,0,0,256,257,5,6,0,
         0,257,258,3,20,10,0,258,259,5,8,0,0,259,350,1,0,0,0,260,261,5,35,
         0,0,261,262,5,6,0,0,262,263,3,20,10,0,263,264,5,8,0,0,264,350,1,
@@ -247,13 +247,14 @@ class PromelaParser ( Parser ):
     RULE_sequence = 10
     RULE_step = 11
     RULE_stmt = 12
-    RULE_options = 13
+    RULE_optionLists = 13
     RULE_option = 14
     RULE_expr = 15
 
     ruleNames =  [ "spec", "unit", "chanDecl", "mtypeDecl", "typedefDecl", 
                    "varDecl", "typename", "proctype", "init", "inlineDecl", 
-                   "sequence", "step", "stmt", "options", "option", "expr" ]
+                   "sequence", "step", "stmt", "optionLists", "option", 
+                   "expr" ]
 
     EOF = Token.EOF
     T__0=1
@@ -1762,8 +1763,8 @@ class PromelaParser ( Parser ):
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def option(self):
-            return self.getTypedRuleContext(PromelaParser.OptionContext,0)
+        def optionLists(self):
+            return self.getTypedRuleContext(PromelaParser.OptionListsContext,0)
 
 
         def enterRule(self, listener:ParseTreeListener):
@@ -1992,8 +1993,8 @@ class PromelaParser ( Parser ):
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def option(self):
-            return self.getTypedRuleContext(PromelaParser.OptionContext,0)
+        def optionLists(self):
+            return self.getTypedRuleContext(PromelaParser.OptionListsContext,0)
 
 
         def enterRule(self, listener:ParseTreeListener):
@@ -2111,7 +2112,7 @@ class PromelaParser ( Parser ):
                 self.state = 247
                 self.match(PromelaParser.T__29)
                 self.state = 248
-                self.option()
+                self.optionLists()
                 self.state = 249
                 self.match(PromelaParser.T__30)
                 pass
@@ -2122,7 +2123,7 @@ class PromelaParser ( Parser ):
                 self.state = 251
                 self.match(PromelaParser.T__31)
                 self.state = 252
-                self.option()
+                self.optionLists()
                 self.state = 253
                 self.match(PromelaParser.T__32)
                 pass
@@ -2362,7 +2363,7 @@ class PromelaParser ( Parser ):
         return localctx
 
 
-    class OptionsContext(ParserRuleContext):
+    class OptionListsContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -2377,29 +2378,29 @@ class PromelaParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return PromelaParser.RULE_options
+            return PromelaParser.RULE_optionLists
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterOptions" ):
-                listener.enterOptions(self)
+            if hasattr( listener, "enterOptionLists" ):
+                listener.enterOptionLists(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitOptions" ):
-                listener.exitOptions(self)
+            if hasattr( listener, "exitOptionLists" ):
+                listener.exitOptionLists(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitOptions" ):
-                return visitor.visitOptions(self)
+            if hasattr( visitor, "visitOptionLists" ):
+                return visitor.visitOptionLists(self)
             else:
                 return visitor.visitChildren(self)
 
 
 
 
-    def options(self):
+    def optionLists(self):
 
-        localctx = PromelaParser.OptionsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 26, self.RULE_options)
+        localctx = PromelaParser.OptionListsContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 26, self.RULE_optionLists)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
