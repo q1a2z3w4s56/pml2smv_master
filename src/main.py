@@ -218,18 +218,22 @@ if USE_ANTLR:
         def visitSequence(self, ctx):
             steps = []
             for child in self._ensure_list(ctx.getChildren()):
+                # 处理局部变量声明
                 if hasattr(child, 'accept') and isinstance(child, PromelaParser.VarDeclContext):
-                    # 局部变量声明，添加到程序的globals或新列表（假设局部变量）
-                    var = self.visit(child)
+                    var = self. visit(child)
                     if isinstance(var, list):
-                        # 假设局部变量添加到proctype的参数或新字段，但这里简单添加到globals
-                        self.program.globals.extend(var)
-                    else:
-                        self.program.globals.append(var)
+                        self.program.globals. extend(var)
+                    elif var is not None:
+                        self. program.globals. append(var)
+                # 处理 step
                 elif hasattr(child, 'accept') and isinstance(child, PromelaParser.StepContext):
                     step = self.visit(child)
-                    if step:
-                        steps.append(step)
+                    if step is not None:
+                        if isinstance(step, Sequence):
+                            # 如果返回的是 Sequence，展开它
+                            steps.extend(step.steps)
+                        else:
+                            steps.append(step)
             return Sequence(steps)
         
         def visitStep(self, ctx):
